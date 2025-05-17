@@ -33,19 +33,23 @@ body {
     min-height: 100vh;
 }
 
-/* Main Layout */
+/* Main Layout Fixes */
 .main-content {
     width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .content-wrapper {
     display: grid;
-    grid-template-columns: 1fr 400px;
+    grid-template-columns: minmax(0, 1fr) 400px;
     max-width: 1800px;
     margin: 0 auto;
     padding: 0 2rem;
     gap: 2rem;
     position: relative;
+    flex: 1;
 }
 
 .main-content-inner {
@@ -53,9 +57,11 @@ body {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Hero Section */
+/* Hero Section Fixes */
 .hero-section {
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     color: rgb(47, 2, 66);
@@ -66,6 +72,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .hero-content {
@@ -74,8 +81,8 @@ body {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 6rem;
+    justify-content: space-between;
+    gap: 4rem;
     width: 100%;
     padding: 0 2rem;
 }
@@ -155,7 +162,7 @@ body {
     transform: translateX(3px);
 }
 
-/* TradingView Widgets */
+/* TradingView Widgets Fixes */
 .sidenav {
     width: 100%;
     background: transparent;
@@ -188,6 +195,7 @@ body {
     margin: 0;
     position: relative;
     z-index: 1;
+    overflow: hidden;
 }
 
 .tradingview-widget-container {
@@ -208,6 +216,37 @@ body {
 /* Hide TradingView copyright */
 .tradingview-widget-copyright {
     display: none !important;
+}
+
+/* Article Preview Fixes */
+.article-preview {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr) 2fr;
+    gap: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+}
+
+.article-image-container {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.article-preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease;
 }
 
 /* Article Viewer Styles */
@@ -605,44 +644,15 @@ body {
     font-size: 0.95rem;
 }
 
-/* Responsive Design */
-@media (max-width: 1600px) {
-    .content-wrapper {
-        grid-template-columns: 1fr 350px;
-        padding: 0 1.5rem;
-    }
-}
-
+/* Responsive Design Fixes */
 @media (max-width: 1400px) {
     .content-wrapper {
-        grid-template-columns: 1fr 300px;
-        padding: 0 1.2rem;
+        grid-template-columns: minmax(0, 1fr) 350px;
+        padding: 0 1.5rem;
     }
 
-    .widget-grid {
-        gap: 1.5rem;
-    }
-
-    .widget-section:first-child .widget-content {
-        width: 100%;
-        padding: 0 1rem;
-    }
-
-    .widget-section:first-child {
-        min-height: 1000px;
-    }
-
-    .widget-section:first-child .tradingview-widget-container,
-    .tradingview-widget-container.symbol-overview {
-        height: 1000px !important;
-    }
-
-    .tradingview-widget-container.technical-analysis {
-        height: 500px;
-    }
-
-    .tradingview-widget-container.financials {
-        height: 600px;
+    .hero-content {
+        gap: 3rem;
     }
 }
 
@@ -659,44 +669,50 @@ body {
         margin-top: 1rem;
         position: relative;
         top: 0;
-        height: 600px;
+        height: 500px;
     }
 
-    .hero-content {
-        gap: 4rem;
-        padding: 0 1.5rem;
+    .article-preview {
+        grid-template-columns: 1fr;
     }
 
-    .hero-content .logo-image {
-        height: 180px;
+    .article-image-container {
+        min-height: 250px;
     }
 
-    .hero-right h2 {
-        font-size: 2.4rem;
+    .article-info {
+        padding: 1.5rem;
+    }
+
+    .widgets-container {
+        padding: 0 1rem;
+    }
+
+    .widget-grid {
+        gap: 1rem;
     }
 
     .widget-section:first-child,
     .widget-section:nth-child(2) {
         grid-column: span 12;
-        height: 400px;
-        margin-bottom: 0.5rem;
+        height: 350px;
     }
 
     .widget-section:nth-child(3) {
-        height: 500px;
-        margin-top: 0;
+        height: 450px;
     }
 }
 
 @media (max-width: 992px) {
     .hero-section {
-        padding: 2.5rem 1.5rem;
+        padding: 2rem 1rem;
+        min-height: auto;
     }
 
     .hero-content {
         flex-direction: column;
         text-align: center;
-        gap: 3rem;
+        gap: 2rem;
         padding: 0 1rem;
     }
 
@@ -705,137 +721,20 @@ body {
         max-width: 100%;
     }
 
-    .hero-content .logo-image {
-        height: 160px;
+    .article-preview {
+        margin: 0 1rem;
     }
 
-    .hero-right h2 {
-        font-size: 2.2rem;
+    .about-section,
+    .contact-section,
+    .disclaimer-section {
+        margin: 2rem 1rem;
     }
 }
 
 @media (max-width: 768px) {
     .content-wrapper {
-        padding: 0 0.8rem;
-    }
-
-    .sidenav {
-        height: 500px;
-    }
-
-    .hero-section {
-        padding: 2rem 1rem;
-    }
-
-    .hero-content {
-        gap: 2.5rem;
-    }
-
-    .hero-content .logo-image {
-        height: 140px;
-    }
-
-    .hero-right h2 {
-        font-size: 2rem;
-    }
-
-    .hero-right p {
-        font-size: 1.1rem;
-    }
-
-    .articles-header,
-    .article-viewer-header,
-    .stats-header {
-        padding: 1.5rem;
-    }
-
-    .header-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-    }
-
-    .header-left {
-        align-items: center;
-    }
-
-    .articles-header h1,
-    .article-viewer-header h1,
-    .stats-header h1 {
-        font-size: 1.8rem;
-    }
-
-    .article-meta {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.8rem;
-    }
-
-    .nav-buttons,
-    .article-actions {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .nav-button,
-    .back-button {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .articles-grid {
-        grid-template-columns: 1fr;
-        margin: 1rem;
-        gap: 1.5rem;
-    }
-
-    .article-container {
-        margin: 1rem;
-    }
-
-    .widgets-container {
-        padding: 0 1rem 1rem;
-    }
-
-    .widget-grid {
-        gap: 0.5rem;
-    }
-
-    .widget-header {
-        padding: 1rem;
-    }
-
-    .widget-header h2 {
-        font-size: 1.2rem;
-    }
-
-    .widget-content {
-        padding: 1rem;
-    }
-
-    .widget-section:first-child,
-    .widget-section:nth-child(2) {
-        height: 350px;
-        margin-bottom: 0.5rem;
-    }
-
-    .widget-section:nth-child(3) {
-        height: 450px;
-    }
-
-    .widget-section:first-child .widget-content,
-    .widget-section:nth-child(2) .widget-content {
-        padding: 0 0.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .content-wrapper {
-        padding: 0 0.8rem;
-    }
-
-    .sidenav {
-        height: 500px;
+        padding: 0;
     }
 
     .hero-section {
@@ -843,89 +742,101 @@ body {
     }
 
     .hero-content {
-        gap: 2rem;
+        gap: 1.5rem;
+        padding: 0 0.8rem;
     }
 
-    .hero-content .logo-image {
-        height: 120px;
+    .article-preview {
+        margin: 0 0.8rem;
+        border-radius: 12px;
     }
 
-    .hero-right h2 {
-        font-size: 1.8rem;
+    .article-info {
+        padding: 1.2rem;
     }
 
-    .hero-right p {
-        font-size: 1rem;
+    .article-actions {
+        flex-direction: column;
+        gap: 0.8rem;
     }
 
-    .articles-header,
-    .article-viewer-header,
-    .stats-header {
-        padding: 1rem;
+    .read-article-btn,
+    .stats-btn,
+    .download-article-btn {
+        width: 100%;
     }
 
-    .articles-header h1,
-    .article-viewer-header h1,
-    .stats-header h1 {
-        font-size: 1.6rem;
-    }
-
-    .nav-button,
-    .back-button {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
-    }
-
-    .articles-grid {
-        margin: 0.8rem;
-        gap: 1rem;
-    }
-
-    .article-content {
-        padding: 1rem;
-    }
-
-    .article-title {
-        font-size: 1.2rem;
-    }
-
-    .article-container {
-        margin: 0.8rem;
+    .about-section,
+    .contact-section,
+    .disclaimer-section {
+        margin: 1.5rem 0.8rem;
+        border-radius: 12px;
     }
 
     .widgets-container {
-        padding: 0 0.8rem 0.8rem;
+        padding: 0 0.8rem;
     }
 
     .widget-grid {
-        gap: 0.5rem;
-    }
-
-    .widget-header {
-        padding: 0.8rem;
-    }
-
-    .widget-header h2 {
-        font-size: 1.1rem;
-    }
-
-    .widget-content {
-        padding: 0.8rem;
+        gap: 0.8rem;
     }
 
     .widget-section:first-child,
     .widget-section:nth-child(2) {
         height: 300px;
-        margin-bottom: 0.5rem;
     }
 
     .widget-section:nth-child(3) {
         height: 400px;
     }
+}
 
-    .widget-section:first-child .widget-content,
-    .widget-section:nth-child(2) .widget-content {
+@media (max-width: 480px) {
+    .content-wrapper {
         padding: 0;
+    }
+
+    .hero-section {
+        padding: 1.2rem 0.6rem;
+    }
+
+    .hero-content {
+        gap: 1.2rem;
+        padding: 0 0.6rem;
+    }
+
+    .article-preview {
+        margin: 0 0.6rem;
+        border-radius: 10px;
+    }
+
+    .article-info {
+        padding: 1rem;
+    }
+
+    .about-section,
+    .contact-section,
+    .disclaimer-section {
+        margin: 1.2rem 0.6rem;
+        border-radius: 10px;
+        padding: 1.2rem;
+    }
+
+    .widgets-container {
+        padding: 0 0.6rem;
+    }
+
+    .widget-grid {
+        gap: 0.6rem;
+    }
+
+    .widget-section:first-child,
+    .widget-section:nth-child(2) {
+        height: 250px;
+    }
+
+    .widget-section:nth-child(3) {
+        height: 350px;
     }
 }
 
@@ -941,38 +852,9 @@ body {
     font-weight: 600;
 }
 
-.article-preview {
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 2rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
 .article-preview:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-}
-
-.article-image-container {
-    width: 100%;
-    height: 100%;
-    min-height: 300px;
-    overflow: hidden;
-}
-
-.article-preview-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.article-preview:hover .article-preview-image {
-    transform: scale(1.05);
 }
 
 .article-info {
