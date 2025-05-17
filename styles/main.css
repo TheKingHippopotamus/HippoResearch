@@ -25,6 +25,7 @@ body {
     min-height: 100vh;
 }
 
+/* Main Layout */
 .main-content {
     width: 100%;
 }
@@ -39,193 +40,11 @@ body {
     position: relative;
 }
 
-.sidenav {
-    width: 100%;
-    background: transparent;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    margin-top: 1rem;
-    position: sticky;
-    top: 3rem;
-    height: calc(100vh - 6rem);
-    overflow: hidden;
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    display: flex;
-    flex-direction: column;
-}
-
-.sidenav-widget {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
 .main-content-inner {
     grid-column: 1;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-/* Hide TradingView copyright */
-.tradingview-widget-copyright {
-    display: none !important;
-}
-
-/* Ensure widget container is transparent */
-.tradingview-widget-container {
-    background: transparent !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.tradingview-widget-container__widget {
-    background: transparent !important;
-    flex: 1;
-    min-height: 100%;
-}
-
-@media (max-width: 1600px) {
-    .content-wrapper {
-        grid-template-columns: 1fr 350px;
-        padding: 0 1.5rem;
-    }
-}
-
-@media (max-width: 1400px) {
-    .content-wrapper {
-        grid-template-columns: 1fr 300px;
-        padding: 0 1.2rem;
-    }
-}
-
-@media (max-width: 1200px) {
-    .content-wrapper {
-        grid-template-columns: 1fr;
-        padding: 0 1rem;
-    }
-
-    .sidenav {
-        grid-column: 1;
-        grid-row: auto;
-        width: 100%;
-        margin-top: 1rem;
-        position: relative;
-        top: 0;
-        height: 600px;
-    }
-
-    .main-content-inner {
-        grid-column: 1;
-    }
-
-    .hero-content {
-        gap: 4rem;
-        padding: 0 1.5rem;
-    }
-
-    .hero-content .logo-image {
-        height: 180px;
-    }
-
-    .hero-right h2 {
-        font-size: 2.4rem;
-    }
-}
-
-@media (max-width: 992px) {
-    .hero-section {
-        padding: 2.5rem 1.5rem;
-    }
-
-    .hero-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 3rem;
-        padding: 0 1rem;
-    }
-
-    .hero-right {
-        text-align: center;
-        max-width: 100%;
-    }
-
-    .hero-content .logo-image {
-        height: 160px;
-    }
-
-    .hero-right h2 {
-        font-size: 2.2rem;
-        margin-bottom: 1.2rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .content-wrapper {
-        padding: 0 0.8rem;
-    }
-
-    .sidenav {
-        height: 500px;
-    }
-
-    .hero-section {
-        padding: 2rem 1rem;
-    }
-
-    .hero-content {
-        gap: 2.5rem;
-    }
-
-    .hero-content .logo-image {
-        height: 140px;
-    }
-
-    .hero-right h2 {
-        font-size: 2rem;
-    }
-
-    .hero-right p {
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .content-wrapper {
-        padding: 0 0.8rem;
-    }
-
-    .sidenav {
-        height: 500px;
-    }
-
-    .hero-section {
-        padding: 1.5rem 0.8rem;
-    }
-
-    .hero-content {
-        gap: 2rem;
-    }
-
-    .hero-content .logo-image {
-        height: 120px;
-    }
-
-    .hero-right h2 {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-    }
-
-    .hero-right p {
-        font-size: 1rem;
-    }
 }
 
 /* Hero Section */
@@ -239,17 +58,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(255,255,255,0.1)"/></svg>');
-    opacity: 0.1;
 }
 
 .hero-content {
@@ -293,10 +101,6 @@ body {
     transition: transform 0.3s ease;
 }
 
-.hero-content .logo-image:hover {
-    transform: scale(1.05);
-}
-
 .hero-right h2 {
     font-size: 2.6rem;
     margin: 0 0 1.5rem 0;
@@ -312,7 +116,62 @@ body {
     margin: 0;
 }
 
-/* Featured Section - Updated */
+/* TradingView Widgets */
+.sidenav {
+    width: 100%;
+    background: transparent;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    margin-top: 1rem;
+    position: sticky;
+    top: 3rem;
+    height: calc(100vh - 6rem);
+    overflow: hidden;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidenav-widget {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.ticker-tape-container {
+    width: 100%;
+    background: transparent;
+    padding: 0.5rem 0;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.tradingview-widget-container {
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.tradingview-widget-container__widget {
+    background: transparent !important;
+    flex: 1;
+    min-height: 100%;
+}
+
+/* Hide TradingView copyright */
+.tradingview-widget-copyright {
+    display: none !important;
+}
+
+/* Featured Section */
 .featured-section {
     padding: 4rem 2rem;
     max-width: 1200px;
@@ -320,8 +179,6 @@ body {
     background-color: var(--background-color);
     text-align: right;
     direction: rtl;
-    margin-left: 0;
-    margin-right: 0;
     width: 100%;
 }
 
@@ -333,7 +190,6 @@ body {
     font-weight: 600;
 }
 
-/* Article Preview - Updated */
 .article-preview {
     background: white;
     border-radius: 16px;
@@ -360,10 +216,6 @@ body {
     transition: transform 0.5s ease;
 }
 
-.article-preview:hover .article-preview-image {
-    transform: scale(1.05);
-}
-
 .article-info {
     padding: 1.5rem;
     display: flex;
@@ -371,29 +223,12 @@ body {
     gap: 1.2rem;
 }
 
-.article-header {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-}
-
-.article-info h3 {
+.article-header h3 {
     color: var(--heading-color);
     font-size: 1.6rem;
     font-weight: 600;
     margin: 0;
     line-height: 1.3;
-}
-
-.article-category {
-    display: inline-block;
-    background: var(--secondary-color);
-    color: var(--primary-color);
-    padding: 0.4rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    align-self: flex-start;
 }
 
 .article-description {
@@ -471,95 +306,6 @@ body {
     flex: 1;
 }
 
-.read-article-btn:hover {
-    background: var(--accent-color);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px var(--shadow-color);
-}
-
-.stats-btn:hover {
-    background: var(--secondary-color);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px var(--shadow-color);
-}
-
-.download-article-btn:hover {
-    background: var(--secondary-color);
-    transform: translateY(-2px);
-}
-
-.read-article-btn i,
-.stats-btn i,
-.download-article-btn i {
-    font-size: 1.2rem;
-}
-
-@media (max-width: 768px) {
-    .article-image-container {
-        height: 200px;
-    }
-
-    .article-info {
-        padding: 1.2rem;
-    }
-
-    .article-info h3 {
-        font-size: 1.4rem;
-    }
-
-    .article-description {
-        font-size: 1rem;
-    }
-
-    .article-meta {
-        flex-direction: column;
-        gap: 0.8rem;
-        padding: 0.8rem 0;
-    }
-
-    .article-actions {
-        flex-direction: column;
-    }
-
-    .read-article-btn,
-    .stats-btn,
-    .download-article-btn {
-        width: 100%;
-        padding: 0.9rem 1.5rem;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .article-image-container {
-        height: 180px;
-    }
-
-    .article-info {
-        padding: 1rem;
-    }
-
-    .article-info h3 {
-        font-size: 1.3rem;
-    }
-
-    .article-description {
-        font-size: 0.95rem;
-    }
-
-    .article-category {
-        font-size: 0.85rem;
-        padding: 0.3rem 0.8rem;
-    }
-
-    .read-article-btn,
-    .stats-btn,
-    .download-article-btn {
-        padding: 0.8rem 1.2rem;
-        font-size: 0.95rem;
-    }
-}
-
 /* About Section */
 .about-section {
     padding: 6rem 2rem;
@@ -568,16 +314,7 @@ body {
     text-align: right;
     background-color: var(--background-color);
     direction: rtl;
-    margin-left: 0;
-    margin-right: 0;
     width: 100%;
-}
-
-.about-section h2 {
-    color: var(--heading-color);
-    margin-bottom: 2rem;
-    font-size: 2.2rem;
-    font-weight: 600;
 }
 
 .about-content p {
@@ -585,6 +322,28 @@ body {
     line-height: 1.8;
     color: var(--text-color);
     margin-bottom: 2rem;
+}
+
+.research-approaches {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.research-approaches li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.research-approaches i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
 }
 
 /* Contact Section */
@@ -598,8 +357,6 @@ body {
     max-width: 800px;
     text-align: right;
     direction: rtl;
-    margin-left: 0;
-    margin-right: 0;
     width: 100%;
 }
 
@@ -611,7 +368,6 @@ body {
     background: linear-gradient(90deg, #997ba8, #bcd8eb);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-align: right;
 }
 
 .contact-section p {
@@ -619,7 +375,6 @@ body {
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 2rem;
-    text-align: right;
 }
 
 .contact-info {
@@ -642,16 +397,6 @@ body {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
-}
-
-.contact-link:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: #bcd8eb;
-    transform: translateX(-5px);
-}
-
-.contact-link i {
-    font-size: 1.2rem;
 }
 
 .contact-form {
@@ -690,28 +435,6 @@ body {
     resize: vertical;
 }
 
-.form-group input[type="email"]:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #997ba8;
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.form-group input[type="file"] {
-    padding: 0.8rem;
-    border-radius: 8px;
-    border: 1px dashed rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.05);
-    color: #ffffff;
-    cursor: pointer;
-}
-
-.form-group small {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.85rem;
-    margin-top: 0.3rem;
-}
-
 .submit-btn {
     display: inline-flex;
     align-items: center;
@@ -729,109 +452,12 @@ body {
     margin-top: 1rem;
 }
 
-.submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.submit-btn i {
-    font-size: 1.2rem;
-}
-
-@media (max-width: 768px) {
-    .contact-section {
-        padding: 2rem;
-        margin: 2rem 1rem;
-    }
-
-    .contact-section h2 {
-        font-size: 1.6rem;
-    }
-
-    .contact-section p {
-        font-size: 1rem;
-    }
-
-    .contact-link {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .form-group input[type="email"],
-    .form-group textarea {
-        font-size: 0.95rem;
-    }
-
-    .submit-btn {
-        padding: 0.9rem 1.8rem;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .contact-section {
-        padding: 1.5rem;
-        margin: 1.5rem 0.8rem;
-    }
-
-    .contact-section h2 {
-        font-size: 1.4rem;
-    }
-
-    .contact-link {
-        padding: 0.7rem 1.2rem;
-        font-size: 0.95rem;
-    }
-
-    .form-group input[type="email"],
-    .form-group textarea {
-        padding: 0.7rem 0.9rem;
-        font-size: 0.9rem;
-    }
-
-    .submit-btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.95rem;
-    }
-}
-
-/* Footer */
-.footer {
-    background-color: var(--heading-color);
-    color: white;
-    padding: 3rem 2rem;
-    text-align: right;
-    direction: rtl;
-}
-
-.footer-content {
-    direction: rtl;
-}
-
-.footer-content p {
-    opacity: 0.8;
-    font-size: 0.95rem;
-}
-
-.read-more {
-    direction: rtl;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-}
-
-.read-more i {
-    transform: scaleX(-1);
-}
-
 /* Disclaimer Section */
 .disclaimer-section {
     background-color: #f8f9fa;
     padding: 3rem 0;
     border-top: 1px solid #e9ecef;
     border-bottom: 1px solid #e9ecef;
-    margin-left: 0;
-    margin-right: 0;
     width: 100%;
 }
 
@@ -869,611 +495,21 @@ body {
     color: #6c757d;
 }
 
-/* Responsive Design */
-@media (min-width: 769px) and (max-width: 1399px) {
-    .logo-image {
-        height: 100px;
-        max-width: 400px;
-    }
-}
-
-@media (max-width: 768px) {
-    .header-content {
-        padding: 0.5rem 1rem;
-    }
-
-    .logo-container {
-        padding: 0.3rem 0;
-        justify-content: center;
-    }
-
-    .logo-image {
-        height: 120px;
-        max-width: 380px;
-    }
-
-    .nav-container {
-        justify-content: flex-start;
-        direction: rtl;
-    }
-
-    .nav-links {
-        gap: 2rem;
-        direction: rtl;
-    }
-
-    .nav-links a {
-        font-size: 1rem;
-    }
-
-    .search-container {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .featured-section,
-    .about-section,
-    .contact-section,
-    .footer {
-        direction: rtl;
-    }
-
-    .articles-grid {
-        direction: rtl;
-    }
-
-    .featured-section {
-        padding: 3rem 1rem;
-    }
-
-    .featured-section h2 {
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .about-section {
-        padding: 4rem 1rem;
-    }
-
-    .about-section h2 {
-        font-size: 1.8rem;
-    }
-
-    .research-approaches li {
-        font-size: 1rem;
-        padding: 0.8rem;
-    }
-
-    .hero-content h2 {
-        font-size: 2rem;
-    }
-
-    .hero-content p {
-        font-size: 1rem;
-    }
-
-    .disclaimer-section {
-        padding: 2rem 0;
-    }
-
-    .disclaimer-content {
-        padding: 0 1.5rem;
-    }
-
-    .disclaimer-content h2 {
-        font-size: 1.3rem;
-        margin-bottom: 1.2rem;
-    }
-
-    .disclaimer-text {
-        font-size: 0.85rem;
-    }
-
-    .contact-section {
-        padding: 3rem 1rem;
-    }
-
-    .contact-content p {
-        font-size: 1rem;
-    }
-
-    .contact-info a {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
-    }
-
-    .articles-grid {
-        gap: 1.5rem;
-    }
-
-    .article-embed embed {
-        height: 600px;
-    }
-
-    .pdf-controls {
-        flex-wrap: wrap;
-        gap: 0.5rem;
-    }
-    
-    .pdf-button {
-        padding: 0.4rem 0.8rem;
-    }
-    
-    #pdf-render {
-        max-height: 600px;
-    }
-}
-
-@media (max-width: 480px) {
-    .logo-image {
-        height: 100px;
-        max-width: 300px;
-    }
-
-    .hero-section {
-        min-height: 25vh;
-        padding: 1rem;
-    }
-
-    .hero-content h2 {
-        font-size: 1.8rem;
-    }
-
-    .hero-content p {
-        font-size: 0.95rem;
-    }
-
-    .disclaimer-section {
-        padding: 1.5rem 0;
-    }
-
-    .disclaimer-content {
-        padding: 0 1rem;
-    }
-
-    .disclaimer-content h2 {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-    }
-
-    .disclaimer-text {
-        font-size: 0.8rem;
-    }
-
-    .contact-section {
-        padding: 2rem 1rem;
-    }
-
-    .contact-content p {
-        font-size: 0.95rem;
-    }
-
-    .contact-info a {
-        padding: 0.7rem 1.2rem;
-        font-size: 0.95rem;
-    }
-
-    .articles-grid {
-        gap: 1rem;
-    }
-
-    .featured-section {
-        padding: 2rem 1rem;
-    }
-
-    .featured-section h2 {
-        font-size: 1.6rem;
-        margin-bottom: 1.2rem;
-    }
-
-    .article-embed embed {
-        height: 400px;
-    }
-
-    .pdf-controls {
-        padding: 0.3rem;
-    }
-    
-    .pdf-button {
-        padding: 0.3rem 0.6rem;
-    }
-    
-    #pdf-render {
-        max-height: 400px;
-    }
-}
-
-/* Remove unused styles */
-.view-all-container,
-.view-all-btn,
-.article-image,
-.article-content,
-.article-excerpt,
-.article-meta-left,
-.article-date,
-.article-author,
-.article-read-time,
-.read-more {
-    display: none;
-}
-
-/* PDF Button Styles */
-.pdf-button-container {
-    text-align: center;
-    margin: 2rem 0;
-}
-
-.pdf-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.8rem;
-    background: var(--primary-color);
+/* Footer */
+.footer {
+    background-color: var(--heading-color);
     color: white;
-    text-decoration: none;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px var(--shadow-color);
+    padding: 3rem 2rem;
+    text-align: right;
+    direction: rtl;
 }
 
-.pdf-link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px var(--shadow-color);
-    background: var(--accent-color);
+.footer-content p {
+    opacity: 0.8;
+    font-size: 0.95rem;
 }
 
-.pdf-link i {
-    font-size: 1.3rem;
-}
-
-@media (max-width: 768px) {
-    .pdf-link {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .pdf-link {
-        padding: 0.7rem 1.2rem;
-        font-size: 0.95rem;
-    }
-}
-
-/* Remove all unused PDF viewer styles */
-.pdf-container,
-.pdf-controls,
-.page-info,
-.pdf-button,
-.pdf-viewer,
-#pdf-render,
-.articles-grid,
-.article-card,
-.article-embed,
-.article-content,
-.article-excerpt,
-.article-meta,
-.article-meta-left,
-.article-date,
-.article-author,
-.article-read-time,
-.read-more,
-.view-all-container,
-.view-all-btn {
-    display: none;
-}
-
-/* PDF Container Styles */
-.pdf-container {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 1rem;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px var(--shadow-color);
-    display: block !important;
-}
-
-.pdf-container iframe {
-    display: block !important;
-    width: 100%;
-    height: 800px;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px var(--shadow-color);
-    background: white;
-}
-
-/* Remove the display: none for pdf-container and iframe from the unused styles section */
-.pdf-controls,
-.page-info,
-.pdf-button,
-.pdf-viewer,
-#pdf-render,
-.articles-grid,
-.article-card,
-.article-embed,
-.article-content,
-.article-excerpt,
-.article-meta,
-.article-meta-left,
-.article-date,
-.article-author,
-.article-read-time,
-.read-more,
-.view-all-container,
-.view-all-btn {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .pdf-container {
-        padding: 0.5rem;
-    }
-    
-    .pdf-container iframe {
-        height: 600px;
-    }
-}
-
-@media (max-width: 480px) {
-    .pdf-container iframe {
-        height: 400px;
-    }
-}
-
-/* Remove all unused styles */
-.pdf-button-container,
-.pdf-link,
-.pdf-controls,
-.page-info,
-.pdf-button,
-.pdf-viewer,
-#pdf-render,
-.articles-grid,
-.article-card,
-.article-embed,
-.article-content,
-.article-excerpt,
-.article-meta,
-.article-meta-left,
-.article-date,
-.article-author,
-.article-read-time,
-.read-more,
-.view-all-container,
-.view-all-btn {
-    display: none;
-}
-
-/* Article Modal Styles */
-.article-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
-    backdrop-filter: blur(5px);
-}
-
-.modal-content {
-    background: white;
-    width: 95%;
-    max-width: 1600px;
-    height: 95vh;
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    animation: modalFadeIn 0.3s ease;
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    background: var(--background-color);
-    border-radius: 16px 16px 0 0;
-}
-
-.modal-header h3 {
-    margin: 0;
-    font-size: 1.4rem;
-    color: var(--heading-color);
-}
-
-.close-modal-btn {
-    background: none;
-    border: none;
-    color: var(--text-color);
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-
-.close-modal-btn:hover {
-    background: rgba(0, 0, 0, 0.05);
-    color: var(--primary-color);
-}
-
-.modal-body {
-    flex: 1;
-    overflow: hidden;
-    position: relative;
-}
-
-.modal-body iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: white;
-}
-
-@keyframes modalFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@media (max-width: 768px) {
-    .modal-content {
-        width: 98%;
-        height: 98vh;
-        margin: 0.25rem;
-    }
-
-    .modal-header {
-        padding: 1rem;
-    }
-
-    .modal-header h3 {
-        font-size: 1.2rem;
-    }
-
-    .close-modal-btn {
-        font-size: 1.3rem;
-        width: 36px;
-        height: 36px;
-    }
-}
-
-@media (max-width: 480px) {
-    .article-modal {
-        padding: 0.25rem;
-    }
-
-    .modal-content {
-        width: 100%;
-        height: 100vh;
-        margin: 0;
-        border-radius: 0;
-    }
-
-    .modal-header {
-        padding: 0.8rem;
-    }
-
-    .modal-header h3 {
-        font-size: 1.1rem;
-    }
-}
-
-/* TradingView Widget Styles */
-.tradingview-widget-container {
-    margin: 1.5rem 0;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 12px var(--shadow-color);
-    background: white;
-}
-
-.tradingview-widget-container.symbol-info {
-    margin-bottom: 1rem;
-}
-
-.tradingview-widget-container.technical-analysis {
-    margin: 1rem 0;
-    height: 450px;
-}
-
-.tradingview-widget-container.financials {
-    margin-top: 1rem;
-    height: 550px;
-}
-
-.tradingview-widget-container__widget {
-    width: 100%;
-    height: 100%;
-}
-
-/* Remove copyright */
-.tradingview-widget-copyright,
-.tradingview-widget-copyright a,
-.tradingview-widget-copyright .blue-text {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .tradingview-widget-container.technical-analysis {
-        height: 400px;
-    }
-    
-    .tradingview-widget-container.financials {
-        height: 500px;
-    }
-}
-
-@media (max-width: 480px) {
-    .tradingview-widget-container.technical-analysis {
-        height: 350px;
-    }
-    
-    .tradingview-widget-container.financials {
-        height: 450px;
-    }
-}
-
-/* Remove categories section styles */
-.categories-section,
-.categories-grid,
-.category-card,
-.category-card i,
-.category-card h3,
-.category-card p {
-    display: none;
-}
-
-/* Remove all unused styles */
-.pdf-button-container,
-.pdf-link,
-.pdf-controls,
-.page-info,
-.pdf-button,
-.pdf-viewer,
-#pdf-render,
-.articles-grid,
-.article-card,
-.article-embed,
-.article-content,
-.article-excerpt,
-.article-meta,
-.article-meta-left,
-.article-date,
-.article-author,
-.article-read-time,
-.read-more,
-.view-all-container,
-.view-all-btn {
-    display: none;
-}
-
-/* Article Modal Styles */
+/* Article Modal */
 .article-modal {
     display: none;
     position: fixed;
@@ -1533,11 +569,6 @@ body {
     transition: all 0.2s ease;
 }
 
-.close-modal-btn:hover {
-    background: rgba(0, 0, 0, 0.05);
-    color: var(--primary-color);
-}
-
 .modal-body {
     flex: 1;
     overflow: hidden;
@@ -1565,7 +596,137 @@ body {
     }
 }
 
+/* Responsive Design */
+@media (max-width: 1600px) {
+    .content-wrapper {
+        grid-template-columns: 1fr 350px;
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 1400px) {
+    .content-wrapper {
+        grid-template-columns: 1fr 300px;
+        padding: 0 1.2rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .content-wrapper {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    .sidenav {
+        grid-column: 1;
+        grid-row: auto;
+        width: 100%;
+        margin-top: 1rem;
+        position: relative;
+        top: 0;
+        height: 600px;
+    }
+
+    .hero-content {
+        gap: 4rem;
+        padding: 0 1.5rem;
+    }
+
+    .hero-content .logo-image {
+        height: 180px;
+    }
+
+    .hero-right h2 {
+        font-size: 2.4rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-section {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 3rem;
+        padding: 0 1rem;
+    }
+
+    .hero-right {
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .hero-content .logo-image {
+        height: 160px;
+    }
+
+    .hero-right h2 {
+        font-size: 2.2rem;
+    }
+}
+
 @media (max-width: 768px) {
+    .content-wrapper {
+        padding: 0 0.8rem;
+    }
+
+    .sidenav {
+        height: 500px;
+    }
+
+    .hero-section {
+        padding: 2rem 1rem;
+    }
+
+    .hero-content {
+        gap: 2.5rem;
+    }
+
+    .hero-content .logo-image {
+        height: 140px;
+    }
+
+    .hero-right h2 {
+        font-size: 2rem;
+    }
+
+    .hero-right p {
+        font-size: 1.1rem;
+    }
+
+    .article-image-container {
+        height: 200px;
+    }
+
+    .article-info {
+        padding: 1.2rem;
+    }
+
+    .article-info h3 {
+        font-size: 1.4rem;
+    }
+
+    .article-description {
+        font-size: 1rem;
+    }
+
+    .article-meta {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .article-actions {
+        flex-direction: column;
+    }
+
+    .read-article-btn,
+    .stats-btn,
+    .download-article-btn {
+        width: 100%;
+    }
+
     .modal-content {
         height: 95vh;
         margin: 0.5rem;
@@ -1587,8 +748,48 @@ body {
 }
 
 @media (max-width: 480px) {
-    .article-modal {
-        padding: 0.5rem;
+    .content-wrapper {
+        padding: 0 0.8rem;
+    }
+
+    .sidenav {
+        height: 500px;
+    }
+
+    .hero-section {
+        padding: 1.5rem 0.8rem;
+    }
+
+    .hero-content {
+        gap: 2rem;
+    }
+
+    .hero-content .logo-image {
+        height: 120px;
+    }
+
+    .hero-right h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero-right p {
+        font-size: 1rem;
+    }
+
+    .article-image-container {
+        height: 180px;
+    }
+
+    .article-info {
+        padding: 1rem;
+    }
+
+    .article-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .article-description {
+        font-size: 0.95rem;
     }
 
     .modal-content {
@@ -1602,202 +803,5 @@ body {
 
     .modal-header h3 {
         font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .tradingview-widget-container.technical-analysis {
-        height: 400px; /* Slightly smaller on tablets */
-    }
-}
-
-@media (max-width: 480px) {
-    .tradingview-widget-container.technical-analysis {
-        height: 350px; /* Even smaller on mobile */
-    }
-}
-
-/* Contact Section */
-.service-section {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.service-section h3 {
-    color: #ffffff;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-    background: linear-gradient(90deg, #997ba8, #bcd8eb);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.service-section p {
-    color: #e0e0e0;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-}
-
-.analysis-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.form-group label {
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: 500;
-}
-
-.form-group input[type="email"],
-.form-group textarea {
-    padding: 0.8rem 1rem;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.05);
-    color: #ffffff;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.form-group textarea {
-    min-height: 120px;
-    resize: vertical;
-}
-
-.form-group input[type="email"]:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #997ba8;
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.form-group input[type="file"] {
-    padding: 0.8rem;
-    border-radius: 8px;
-    border: 1px dashed rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.05);
-    color: #ffffff;
-    cursor: pointer;
-}
-
-.form-group small {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.85rem;
-    margin-top: 0.3rem;
-}
-
-.submit-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
-    padding: 1rem 2rem;
-    background: linear-gradient(90deg, #997ba8, #bcd8eb);
-    color: #000000;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 1rem;
-}
-
-.submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.submit-btn i {
-    font-size: 1.2rem;
-}
-
-@media (max-width: 768px) {
-    .service-section {
-        margin-top: 2rem;
-        padding-top: 1.5rem;
-    }
-
-    .service-section h3 {
-        font-size: 1.3rem;
-    }
-
-    .service-section p {
-        font-size: 1rem;
-    }
-
-    .form-group input[type="email"],
-    .form-group textarea {
-        font-size: 0.95rem;
-    }
-
-    .submit-btn {
-        padding: 0.9rem 1.8rem;
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .service-section {
-        margin-top: 1.5rem;
-        padding-top: 1.2rem;
-    }
-
-    .service-section h3 {
-        font-size: 1.2rem;
-    }
-
-    .form-group input[type="email"],
-    .form-group textarea {
-        padding: 0.7rem 0.9rem;
-        font-size: 0.9rem;
-    }
-
-    .submit-btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.95rem;
-    }
-}
-
-.ticker-tape-container {
-    width: 100%;
-    background: transparent;
-    padding: 0.5rem 0;
-    margin: 0;
-    position: relative;
-    z-index: 1;
-}
-
-.ticker-tape-container .tradingview-widget-container {
-    margin: 0 !important;
-    padding: 0 !important;
-    background: transparent !important;
-}
-
-.ticker-tape-container .tradingview-widget-container__widget {
-    background: transparent !important;
-}
-
-/* Hide TradingView copyright */
-.ticker-tape-container .tradingview-widget-copyright {
-    display: none !important;
-}
-
-@media (max-width: 768px) {
-    .ticker-tape-container {
-        padding: 0.3rem 0;
     }
 } 
