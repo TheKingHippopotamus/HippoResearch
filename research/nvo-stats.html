@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>סטטיסטיקה ונתונים - NVO | Hippopotamus Research</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/stats.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <section class="stats-section">
+            <div class="stats-header">
+                <div class="header-content">
+                    <div class="header-left">
+                        <h1>סטטיסטיקה ונתונים - Novo Nordisk (NVO)</h1>
+                        <div class="language-switcher">
+                            <button class="lang-btn active" data-lang="he">עברית</button>
+                            <button class="lang-btn" data-lang="en">English</button>
+                        </div>
+                    </div>
+                    <a href="../index.html" class="back-button">
+                        <i class="fas fa-arrow-right"></i>
+                        <span class="lang-text" data-he="חזרה למאמר" data-en="Back to Article">חזרה למאמר</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="widgets-container">
+                <div class="widget-grid">
+                    <!-- Symbol Overview Widget -->
+                    <div class="widget-section">
+                        <div class="widget-header">
+                            <h2 class="lang-text" data-he="סקירה כללית" data-en="Overview">סקירה כללית</h2>
+                        </div>
+                        <div class="widget-content">
+                            <!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container">
+                                <div class="tradingview-widget-container__widget"></div>
+                                <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+                                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+                                {
+                                "symbols": [
+                                    [
+                                        "NYSE:NVO|ALL"
+                                    ]
+                                ],
+                                "chartOnly": false,
+                                "width": "100%",
+                                "height": "100%",
+                                "locale": "en",
+                                "colorTheme": "dark",
+                                "autosize": true,
+                                "showVolume": true,
+                                "showMA": false,
+                                "hideDateRanges": false,
+                                "hideMarketStatus": false,
+                                "hideSymbolLogo": false,
+                                "scalePosition": "right",
+                                "scaleMode": "Normal",
+                                "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+                                "fontSize": "10",
+                                "noTimeScale": false,
+                                "valuesTracking": "1",
+                                "changeMode": "price-and-percent",
+                                "chartType": "area",
+                                "headerFontSize": "large",
+                                "volumeUpColor": "rgba(34, 171, 148, 1)",
+                                "volumeDownColor": "rgba(247, 82, 95, 1)",
+                                "lineWidth": 2,
+                                "lineType": 0,
+                                "compareSymbol": {
+                                    "symbol": "NYSE:LLY",
+                                    "lineColor": "rgba(255, 229, 0, 1)",
+                                    "lineWidth": 2,
+                                    "showLabels": true
+                                },
+                                "dateRanges": [
+                                    "1d|1",
+                                    "1m|30",
+                                    "3m|60",
+                                    "12m|1D",
+                                    "60m|1W",
+                                    "all|1M"
+                                ]
+                                }
+                                </script>
+                            </div>
+                            <!-- TradingView Widget END -->
+                        </div>
+                    </div>
+
+                    <!-- Technical Analysis Widget -->
+                    <div class="widget-section">
+                        <div class="widget-header">
+                            <h2 class="lang-text" data-he="ניתוח טכני" data-en="Technical Analysis">ניתוח טכני</h2>
+                        </div>
+                        <div class="widget-content">
+                            <div class="tradingview-widget-container">
+                                <div class="tradingview-widget-container__widget"></div>
+                                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+                                {
+                                    "interval": "1M",
+                                    "width": "100%",
+                                    "height": "100%",
+                                    "isTransparent": true,
+                                    "symbol": "NYSE:NVO",
+                                    "showIntervalTabs": true,
+                                    "displayMode": "single",
+                                    "locale": "en",
+                                    "colorTheme": "dark"
+                                }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Financials Widget -->
+                    <div class="widget-section">
+                        <div class="widget-header">
+                            <h2 class="lang-text" data-he="נתונים פיננסיים" data-en="Financial Data">נתונים פיננסיים</h2>
+                        </div>
+                        <div class="widget-content">
+                            <div class="tradingview-widget-container financials">
+                                <div class="tradingview-widget-container__widget"></div>
+                                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-financials.js" async>
+                                {
+                                    "isTransparent": true,
+                                    "largeChartUrl": "",
+                                    "displayMode": "adaptive",
+                                    "width": "100%",
+                                    "height": "100%",
+                                    "colorTheme": "dark",
+                                    "symbol": "NYSE:NVO",
+                                    "locale": "en"
+                                }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="lang-text" data-he="© 2024 Hippopotamus Research. כל הזכויות שמורות." data-en="© 2024 Hippopotamus Research. All rights reserved.">© 2024 Hippopotamus Research. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Language Switcher
+        document.addEventListener('DOMContentLoaded', function() {
+            const langBtns = document.querySelectorAll('.lang-btn');
+            const langTexts = document.querySelectorAll('.lang-text');
+            const html = document.documentElement;
+
+            // Load saved language preference
+            const savedLang = localStorage.getItem('preferred_language') || 'he';
+            setLanguage(savedLang);
+
+            langBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.dataset.lang;
+                    setLanguage(lang);
+                    localStorage.setItem('preferred_language', lang);
+                });
+            });
+
+            function setLanguage(lang) {
+                // Update HTML lang and dir attributes
+                html.lang = lang;
+                html.dir = lang === 'he' ? 'rtl' : 'ltr';
+
+                // Update active button
+                langBtns.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+
+                // Update all translatable texts
+                langTexts.forEach(element => {
+                    const text = element.dataset[lang];
+                    if (text) {
+                        element.textContent = text;
+                    }
+                });
+
+                // Update TradingView widgets locale
+                const widgets = document.querySelectorAll('.tradingview-widget-container__widget');
+                widgets.forEach(widget => {
+                    const script = widget.nextElementSibling;
+                    if (script && script.src.includes('tradingview.com')) {
+                        const widgetId = widget.id;
+                        if (widgetId) {
+                            // Reload widget with new locale
+                            const widgetScript = document.createElement('script');
+                            widgetScript.src = script.src;
+                            widgetScript.async = true;
+                            script.parentNode.replaceChild(widgetScript, script);
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

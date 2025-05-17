@@ -7,104 +7,205 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
 </head>
 <body>
-    <main>
+    <main class="main-content">
         <section id="hero" class="hero-section">
             <div class="hero-content">
-                <div class="logo">
-                    <img src="static/logo.png" alt="Hippopotamus Research Logo" class="logo-image">
+                <div class="hero-left">
+                    <div class="logo">
+                        <img src="static/logo.png" alt="Hippopotamus Research Logo" class="logo-image">
+                    </div>
                 </div>
-                <h2>Hippopotamus Research</h2>
-                <p>ניתוח שוק עצמאי המשלב גישות טכניות ופונדמנטליות. מחקר מעמיק של שווקים פיננסיים, המבוסס על ניסיון מעשי וסקרנות אינטלקטואלית.</p>
+                <div class="hero-right">
+                    <h2>Hippopotamus Research</h2>
+                    <p>ניתוח שוק עצמאי המשלב גישות טכניות ופונדמנטליות. מחקר מעמיק של שווקים פיננסיים, המבוסס על ניסיון מעשי וסקרנות אינטלקטואלית.</p>
+                </div>
             </div>
         </section>
 
-        <section id="featured" class="featured-section">
-            <h2>מאמרי מחקר אחרונים</h2>
-            <div class="articles-grid">
-                <article class="article-card">
-                    <div class="article-embed">
-                        <div style="position: relative; width: 100%; height: 0; padding-top: 56.25%; overflow: hidden; border-radius: 12px;">
-                            <iframe loading="lazy" 
-                                style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none;"
-                                src="https://www.canva.com/design/DAGntlJpqfY/urRojrfitlWZ7soNQUL7xQ/view?embed"
-                                allowfullscreen="allowfullscreen" 
-                                allow="fullscreen"
-                                onerror="this.onerror=null; this.parentElement.innerHTML='<div style=\'position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #f8f9fa; color: #495057; font-size: 1.1rem; text-align: center; padding: 2rem;\'>טוען המאמר...<br>אם המאמר לא נטען, אנא רענן את הדף או נסה שוב מאוחר יותר.</div>'">
-                            </iframe>
+        <div class="ticker-tape-container">
+            <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                {
+                    "symbols": [
+                        {
+                            "proName": "FOREXCOM:SPXUSD",
+                            "title": "S&P 500 Index"
+                        },
+                        {
+                            "proName": "FOREXCOM:NSXUSD",
+                            "title": "US 100 Cash CFD"
+                        },
+                        {
+                            "proName": "FX_IDC:EURUSD",
+                            "title": "EUR to USD"
+                        },
+                        {
+                            "proName": "BITSTAMP:BTCUSD",
+                            "title": "Bitcoin"
+                        },
+                        {
+                            "proName": "BITSTAMP:ETHUSD",
+                            "title": "Ethereum"
+                        }
+                    ],
+                    "showSymbolLogo": true,
+                    "isTransparent": true,
+                    "displayMode": "compact",
+                    "colorTheme": "light",
+                    "locale": "he"
+                }
+                </script>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="sidenav">
+                <div class="tradingview-widget-container sidenav-widget">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+                    {
+                        "feedMode": "all_symbols",
+                        "isTransparent": true,
+                        "displayMode": "regular",
+                        "width": "100%",
+                        "height": "100%",
+                        "colorTheme": "light",
+                        "locale": "he"
+                    }
+                    </script>
+                </div>
+            </div>
+
+            <div class="main-content-inner">
+                <section id="featured" class="featured-section">
+                    <h2>מאמרי מחקר אחרונים</h2>
+                    <div class="article-preview">
+                        <div class="article-image-container">
+                            <img src="static/nvo.png" alt="ניתוח שוק NVO" class="article-preview-image">
+                        </div>
+                        <div class="article-info">
+                            <div class="article-header">
+                                <h3>ניתוח אסטרטגי: Novo Nordisk (NVO)</h3>
+                            </div>
+                            <p class="article-description">מחקר מעמיק החושף את הסיפור שמאחורי המספרים. האם התמחור הנוכחי משקף את הפוטנציאל של החברה? בדוח זה נצלול לתוך דפוסי הצמיחה של נובו נורדיסק, ננתח את האיתותים שההנהלה שולחת לשוק דרך פעולותיה, ונבחן את הכוחות הטכניים והתמונה הפונדמנטלית — מהזוויות שפחות מדברים עליהן.</p>
+                            
+                            <div class="article-actions">
+                                <button onclick="openArticleModal()" class="read-article-btn">
+                                    <i class="fas fa-book-reader"></i>
+                                    קרא את המאמר
+                                </button>
+                                <a href="research/nvo-stats.html" class="stats-btn">
+                                    <i class="fas fa-chart-line"></i>
+                                    סטטיסטיקה ונתונים
+                                </a>
+                                <a href="static/nvo.pdf" target="_blank" class="download-article-btn">
+                                    <i class="fas fa-file-pdf"></i>
+                                    הורד PDF
+                                </a>
+                            </div>
+
+                            <div class="article-meta">
+                                <span class="article-date"><i class="far fa-calendar"></i> פברואר 2024</span>
+                                <span class="article-read-time"><i class="far fa-clock"></i> זמן קריאה: 10 דקות</span>
+                                <span class="article-type"><i class="fas fa-chart-line"></i> ניתוח שוק</span>
+                            </div>
                         </div>
                     </div>
-                </article>
-            </div>
-        </section>
+                </section>
 
-        <section id="categories" class="categories-section">
-            <h2>Research Categories</h2>
-            <div class="categories-grid">
-                <div class="category-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Market Analysis</h3>
-                    <p>In-depth analysis of market trends and movements</p>
+                <!-- Article Modal -->
+                <div id="articleModal" class="article-modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>ניתוח שוק - NVO</h3>
+                            <button onclick="closeArticleModal()" class="close-modal-btn">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <iframe id="articleFrame" src="" frameborder="0"></iframe>
+                        </div>
+                    </div>
                 </div>
-                <div class="category-card">
-                    <i class="fas fa-landmark"></i>
-                    <h3>Financial Institutions</h3>
-                    <p>Research on banking and financial sector dynamics</p>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-globe"></i>
-                    <h3>Global Markets</h3>
-                    <p>International market research and insights</p>
-                </div>
-                <div class="category-card">
-                    <i class="fas fa-chart-pie"></i>
-                    <h3>Investment Strategies</h3>
-                    <p>Analysis of investment approaches and methodologies</p>
-                </div>
-            </div>
-        </section>
 
-        <section id="about" class="about-section">
-            <h2>על המחקר</h2>
-            <div class="about-content">
-                <p>הגישה המחקרית של Hippopotamus Research מבוססת על שילוב ייחודי בין ניתוח טכני מתקדם לבין הבנה מעמיקה של היסודות הפיננסיים. המתודולוגיה שלנו מתאפיינת ב:</p>
-                <ul class="research-approaches">
-                    <li><i class="fas fa-chart-line"></i> ניתוח טכני מתקדם המשלב מגמות שוק, מבנים גרפיים וזיהוי דפוסים</li>
-                    <li><i class="fas fa-balance-scale"></i> בחינה מעמיקה של נתונים פונדמנטליים, יחסים פיננסיים ומדדים כלכליים</li>
-                    <li><i class="fas fa-brain"></i> שילוב בין ניתוח נתונים כמותי להבנה איכותנית של השווקים</li>
-                    <li><i class="fas fa-book-reader"></i> התעדכנות מתמדת בשיטות מחקר חדשות וטכנולוגיות מתקדמות</li>
-                </ul>
-                <p>המחקר מיועד למשקיעים המחפשים הבנה מעמיקה של השווקים, תוך שילוב בין גישות שונות לניתוח השקעות. הגישה הייחודית שלנו מאפשרת זיהוי הזדמנויות והבנת סיכונים בצורה מקיפה ומעמיקה.</p>
-            </div>
-        </section>
+                <section id="about" class="about-section">
+                    <div class="about-content">
+                        <p>הגישה המחקרית של Hippopotamus Research מבוססת על שילוב ייחודי בין ניתוח טכני מתקדם לבין הבנה מעמיקה של היסודות הפיננסיים. המתודולוגיה שלנו מתאפיינת ב:</p>
+                        <ul class="research-approaches">
+                            <li><i class="fas fa-chart-line"></i> ניתוח טכני מתקדם המשלב מגמות שוק, מבנים גרפיים וזיהוי דפוסים</li>
+                            <li><i class="fas fa-balance-scale"></i> בחינה מעמיקה של נתונים פונדמנטליים, יחסים פיננסיים ומדדים כלכליים</li>
+                            <li><i class="fas fa-brain"></i> שילוב בין ניתוח נתונים כמותי להבנה איכותנית של השווקים</li>
+                            <li><i class="fas fa-book-reader"></i> התעדכנות מתמדת בשיטות מחקר חדשות וטכנולוגיות מתקדמות</li>
+                        </ul>
+                        <p>המחקר מיועד למשקיעים המחפשים הבנה מעמיקה של השווקים, תוך שילוב בין גישות שונות לניתוח השקעות. הגישה הייחודית שלנו מאפשרת זיהוי הזדמנויות והבנת סיכונים בצורה מקיפה ומעמיקה.</p>
+                    </div>
+                </section>
 
-        <section id="contact" class="contact-section">
-            <h2>צור קשר</h2>
-            <div class="contact-content">
-                <p>לפניות מחקר או הזדמנויות לשיתוף פעולה:</p>
-                <div class="contact-info">
-                    <a href="https://x.com/LmlyhNyr" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> @LmlyhNyr</a>
-                </div>
-            </div>
-        </section>
+                <section class="contact-section">
+                    <h2>צור קשר</h2>
+                    <p>לפניות, שאלות או בקשות לניתוח מפורט של מניה או שוק ספציפי:</p>
+                    
+                    <div class="contact-info">
+                        <a href="mailto:king.hippopotamus@yahoo.com?subject=פנייה%20לHippopotamus%20Research" class="contact-link">
+                            <i class="fas fa-envelope"></i>
+                            king.hippopotamus@yahoo.com
+                        </a>
+                        <a href="https://x.com/intent/follow?screen_name=LmlyhNyr" target="_blank" rel="noopener" class="contact-link">
+                            <i class="fa-brands fa-x-twitter"></i>
+                            @LmlyhNyr
+                        </a>
+                    </div>
 
-        <section id="disclaimer" class="disclaimer-section">
-            <div class="disclaimer-content">
-                <h2>📜 Disclaimer – Hippopotamus Research</h2>
-                <div class="disclaimer-text">
-                    <p>המידע המוצג במסמכים, דוחות, גרפים וניתוחים תחת השם Hippopotamus Research נועד למטרות מידע, למידה ודיון בלבד, ואינו מהווה ייעוץ השקעות, ייעוץ פיננסי, ייעוץ משפטי או המלצה לרכישה או מכירה של ניירות ערך מכל סוג.</p>
-                    
-                    <p>הניתוחים הכלולים במחקר מסתמכים על מקורות נתונים גלויים לציבור, מידע פיננסי, תחזיות שוק, מגמות מאקרו־כלכליות והערכות מודלים, אולם אין התחייבות או ערובה לדיוק, שלמות או עדכניות המידע. כל מסקנה, תחזית או הבעת דעה הינה אישית ואינה מייצגת גורם מוסדי, רגולטורי או מסחרי כלשהו.</p>
-                    
-                    <p>Hippopotamus Research ו/או מי מטעמה אינם נושאים באחריות כלשהי לכל נזק, הפסד או הוצאה – ישירה או עקיפה – שייגרמו כתוצאה משימוש במידע הכלול במסמך זה. כל פעולה פיננסית, מסחרית או השקעתית נעשית על אחריות המשתמש בלבד.</p>
-                    
-                    <p>אין לראות בשום חלק מהמחקר משום התחייבות לתשואה, הבטחת הצלחה או ציון דרך עתידי ודאי. השקעות כרוכות בסיכון, לרבות סיכון להפסד קרן ההשקעה, ויש להתייעץ עם גורם מוסמך בטרם קבלת החלטות.</p>
-                    
-                    <p class="copyright">© כל הזכויות שמורות ל־Hippopotamus Research. אין להעתיק, לשכפל, להפיץ או לפרסם כל חלק מהמסמך ללא רשות מפורשת ובכתב.</p>
-                </div>
+                    <form class="contact-form" action="https://formspree.io/f/mwpoyyoq" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="email">כתובת אימייל:</label>
+                            <input type="email" id="email" name="email" required placeholder="הזן כתובת אימייל">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">פרטי הפנייה:</label>
+                            <textarea id="message" name="message" required placeholder="פרט את הפנייה שלך..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="upload">קבצים מצורפים (אופציונלי):</label>
+                            <input type="file" id="upload" name="upload" accept=".pdf,.doc,.docx,.xls,.xlsx">
+                            <small>ניתן לצרף קבצי PDF, Word או Excel</small>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            שלח פנייה
+                        </button>
+                    </form>
+                </section>
+
+                <section id="disclaimer" class="disclaimer-section">
+                    <div class="disclaimer-content">
+                        <h2>📜 Disclaimer – Hippopotamus Research</h2>
+                        <div class="disclaimer-text">
+                            <p>המידע המוצג במסמכים, דוחות, גרפים וניתוחים תחת השם Hippopotamus Research נועד למטרות מידע, למידה ודיון בלבד, ואינו מהווה ייעוץ השקעות, ייעוץ פיננסי, ייעוץ משפטי או המלצה לרכישה או מכירה של ניירות ערך מכל סוג.</p>
+                            
+                            <p>הניתוחים הכלולים במחקר מסתמכים על מקורות נתונים גלויים לציבור, מידע פיננסי, תחזיות שוק, מגמות מאקרו־כלכליות והערכות מודלים, אולם אין התחייבות או ערובה לדיוק, שלמות או עדכניות המידע. כל מסקנה, תחזית או הבעת דעה הינה אישית ואינה מייצגת גורם מוסדי, רגולטורי או מסחרי כלשהו.</p>
+                            
+                            <p>Hippopotamus Research ו/או מי מטעמה אינם נושאים באחריות כלשהי לכל נזק, הפסד או הוצאה – ישירה או עקיפה – שייגרמו כתוצאה משימוש במידע הכלול במסמך זה. כל פעולה פיננסית, מסחרית או השקעתית נעשית על אחריות המשתמש בלבד.</p>
+                            
+                            <p>אין לראות בשום חלק מהמחקר משום התחייבות לתשואה, הבטחת הצלחה או ציון דרך עתידי ודאי. השקעות כרוכות בסיכון, לרבות סיכון להפסד קרן ההשקעה, ויש להתייעץ עם גורם מוסמך בטרם קבלת החלטות.</p>
+                            
+                            <p class="copyright">© כל הזכויות שמורות ל־Hippopotamus Research. אין להעתיק, לשכפל, להפיץ או לפרסם כל חלק מהמסמך ללא רשות מפורשת ובכתב.</p>
+                        </div>
+                    </div>
+                </section>
             </div>
-        </section>
+        </div>
 
         <footer class="footer">
             <div class="footer-content">
@@ -114,6 +215,31 @@
     </main>
 
     <script src="js/main.js"></script>
+    <script>
+        function openArticleModal() {
+            const modal = document.getElementById('articleModal');
+            const iframe = document.getElementById('articleFrame');
+            iframe.src = 'research/nvo.html';
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeArticleModal() {
+            const modal = document.getElementById('articleModal');
+            const iframe = document.getElementById('articleFrame');
+            modal.style.display = 'none';
+            iframe.src = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('articleModal');
+            if (event.target === modal) {
+                closeArticleModal();
+            }
+        }
+    </script>
 </body>
 </html> 
 
