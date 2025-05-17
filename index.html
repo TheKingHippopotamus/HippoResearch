@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hippopotamus Research | Professional Research Articles</title>
-    <link rel="stylesheet" href="/HippoResearch/styles/main.css">
+    <base href="https://thekinghippopotamus.github.io/HippoResearch/">
+    <link rel="stylesheet" href="./styles/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- PDF.js -->
@@ -19,7 +20,7 @@
             <div class="hero-content">
                 <div class="hero-left">
                     <div class="logo">
-                        <img src="/HippoResearch/static/logo.png" alt="Hippopotamus Research Logo" class="logo-image">
+                        <img src="./static/logo.png" alt="Hippopotamus Research Logo" class="logo-image">
                     </div>
                 </div>
                 <div class="hero-right">
@@ -89,7 +90,7 @@
                     <h2>מאמרי מחקר אחרונים</h2>
                     <div class="article-preview">
                         <div class="article-image-container">
-                            <img src="/HippoResearch/static/nvo.png" alt="ניתוח שוק NVO" class="article-preview-image">
+                            <img src="./static/nvo.png" alt="ניתוח שוק NVO" class="article-preview-image">
                         </div>
                         <div class="article-info">
                             <div class="article-header">
@@ -102,11 +103,11 @@
                                     <i class="fas fa-book-reader"></i>
                                     קרא את המאמר
                                 </button>
-                                <a href="/HippoResearch/research/nvo-stats.html" class="stats-btn">
+                                <a href="./research/nvo-stats.html" class="stats-btn">
                                     <i class="fas fa-chart-line"></i>
                                     סטטיסטיקה ונתונים
                                 </a>
-                                <a href="/HippoResearch/static/nvo.pdf" target="_blank" class="download-article-btn">
+                                <a href="./static/nvo.pdf" target="_blank" class="download-article-btn">
                                     <i class="fas fa-file-pdf"></i>
                                     הורד PDF
                                 </a>
@@ -214,12 +215,12 @@
         </footer>
     </main>
 
-    <script src="/HippoResearch/js/main.js"></script>
+    <script src="./js/main.js"></script>
     <script>
         function openArticleModal() {
             const modal = document.getElementById('articleModal');
             const iframe = document.getElementById('articleFrame');
-            iframe.src = '/HippoResearch/research/nvo.html';
+            iframe.src = './research/nvo.html';
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
