@@ -26,6 +26,10 @@
                 <div class="hero-right">
                     <h2>Hippopotamus Research</h2>
                     <p>ניתוח שוק עצמאי המשלב גישות טכניות ופונדמנטליות. מחקר מעמיק של שווקים פיננסיים, המבוסס על ניסיון מעשי וסקרנות אינטלקטואלית.</p>
+                    <a href="./articles.html" class="articles-btn">
+                        <i class="fas fa-book"></i>
+                        <span class="lang-text" data-he="לכל המאמרים" data-en="All Articles">לכל המאמרים</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -99,17 +103,17 @@
                             <p class="article-description">מחקר מעמיק החושף את הסיפור שמאחורי המספרים. האם התמחור הנוכחי משקף את הפוטנציאל של החברה? בדוח זה נצלול לתוך דפוסי הצמיחה של נובו נורדיסק, ננתח את האיתותים שההנהלה שולחת לשוק דרך פעולותיה, ונבחן את הכוחות הטכניים והתמונה הפונדמנטלית — מהזוויות שפחות מדברים עליהן.</p>
                             
                             <div class="article-actions">
-                                <button onclick="openArticleModal()" class="read-article-btn">
-                                    <i class="fas fa-book-reader"></i>
-                                    קרא את המאמר
-                                </button>
+                                <a href="./research/nvo.html" class="read-article-btn">
+                                    <i class="fas fa-book-open"></i>
+                                    <span class="lang-text" data-he="קרא את המאמר" data-en="Read Article">קרא את המאמר</span>
+                                </a>
                                 <a href="./research/nvo-stats.html" class="stats-btn">
                                     <i class="fas fa-chart-line"></i>
-                                    סטטיסטיקה ונתונים
+                                    <span class="lang-text" data-he="סטטיסטיקה ונתונים" data-en="Statistics & Data">סטטיסטיקה ונתונים</span>
                                 </a>
-                                <a href="./static/nvo.pdf" target="_blank" class="download-article-btn">
-                                    <i class="fas fa-file-pdf"></i>
-                                    הורד PDF
+                                <a href="./static/nvo.pdf" class="download-article-btn" target="_blank">
+                                    <i class="fas fa-download"></i>
+                                    <span class="lang-text" data-he="הורד PDF" data-en="Download PDF">הורד PDF</span>
                                 </a>
                             </div>
 
@@ -121,21 +125,6 @@
                         </div>
                     </div>
                 </section>
-
-                <!-- Article Modal -->
-                <div id="articleModal" class="article-modal">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3>ניתוח שוק - NVO</h3>
-                            <button onclick="closeArticleModal()" class="close-modal-btn">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <iframe id="articleFrame" src="" frameborder="0"></iframe>
-                        </div>
-                    </div>
-                </div>
 
                 <section id="about" class="about-section">
                     <div class="about-content">
@@ -217,30 +206,63 @@
 
     <script src="./js/main.js"></script>
     <script>
-        function openArticleModal() {
+        // Remove the modal functions since we're not using them anymore
+        /* function openModal(url) {
             const modal = document.getElementById('articleModal');
-            const iframe = document.getElementById('articleFrame');
-            iframe.src = './research/nvo.html';
+            const frame = document.getElementById('articleFrame');
+            frame.src = url;
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
 
-        function closeArticleModal() {
+        function closeModal() {
             const modal = document.getElementById('articleModal');
-            const iframe = document.getElementById('articleFrame');
+            const frame = document.getElementById('articleFrame');
             modal.style.display = 'none';
-            iframe.src = '';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('articleModal');
-            if (event.target === modal) {
-                closeArticleModal();
-            }
-        }
+            frame.src = '';
+            document.body.style.overflow = '';
+        } */
     </script>
+
+    <style>
+    .articles-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        margin-top: 1.5rem;
+        padding: 1rem 2rem;
+        background: rgba(255, 255, 255, 0.2);
+        color: rgb(47, 2, 66);
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 500;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .articles-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-3px);
+    }
+
+    .articles-btn i {
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+    }
+
+    .articles-btn:hover i {
+        transform: translateX(3px);
+    }
+
+    @media (max-width: 768px) {
+        .articles-btn {
+            width: 100%;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+    }
+    </style>
 </body>
 </html> 
 
