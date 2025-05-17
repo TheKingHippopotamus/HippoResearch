@@ -6,164 +6,417 @@
 }
 
 :root {
-    --primary-color: #997ba8;      /* Soft blue-gray */
-    --secondary-color: #f4dbf8;    /* Very light gray */
-    --accent-color: #bcd8eb;       /* Soft blue */
-    --text-color: #4A5568;         /* Soft dark gray */
-    --heading-color: #2D3748;      /* Darker gray for headings */
-    --background-color: #faf5fb;   /* Clean white */
-    --shadow-color: rgba(0, 0, 0, 0.05);
+    --dark-bg: #000000;
+    --darker-bg: #0a0a0a;
+    --widget-bg: #111111;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --accent-gradient: linear-gradient(90deg, #997ba8, #bcd8eb);
+    --primary-color: #997ba8;
+    --accent-color: #bcd8eb;
 }
 
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.8;
-    color: var(--text-color);
-    background-color: var(--background-color);
-    letter-spacing: 0.01em;
+    background: var(--dark-bg);
+    color: #ffffff;
     margin: 0;
     min-height: 100vh;
 }
 
-/* Main Layout */
-.main-content {
+/* Stats Page Layout */
+.stats-section {
     width: 100%;
-}
-
-.content-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 400px;
-    max-width: 1800px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    gap: 2rem;
-    position: relative;
-}
-
-.main-content-inner {
-    grid-column: 1;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* TradingView Widgets */
-.sidenav {
-    width: 100%;
-    background: transparent;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    margin-top: 1rem;
-    position: sticky;
-    top: 3rem;
-    height: calc(100vh - 6rem);
-    overflow: hidden;
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    display: flex;
-    flex-direction: column;
-}
-
-.sidenav-widget {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.ticker-tape-container {
-    width: 100%;
-    background: transparent;
-    padding: 0.5rem 0;
     margin: 0;
-    position: relative;
-    z-index: 1;
+    padding: 0;
+    direction: rtl;
+    background: var(--dark-bg);
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 2rem;
 }
 
-.tradingview-widget-container {
-    background: transparent !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    flex: 1;
+/* Header Styles */
+.stats-header {
+    width: 100%;
+    background: var(--darker-bg);
+    padding: 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.header-left {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
+}
+
+.language-switcher {
+    display: flex;
+    gap: 0.5rem;
+    background: var(--widget-bg);
+    padding: 0.3rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.lang-btn {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.lang-btn.active {
+    background: var(--accent-gradient);
+    color: #000000;
+}
+
+.stats-header h1 {
+    font-size: 2.2rem;
+    color: #ffffff;
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.3;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    background: var(--widget-bg);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.back-button:hover {
+    background: var(--accent-gradient);
+    color: #000000;
+    transform: translateX(-5px);
+    border-color: transparent;
+}
+
+.back-button i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover i {
+    transform: translateX(3px);
+}
+
+/* Widgets Container */
+.widgets-container {
+    width: 100%;
+    padding: 0 2rem 2rem;
+}
+
+.widget-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1rem;
+}
+
+.widget-section:first-child,
+.widget-section:nth-child(2) {
+    grid-column: span 6;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    height: 450px;
+}
+
+.widget-section:first-child .widget-content,
+.widget-section:nth-child(2) .widget-content {
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+}
+
+.widget-section:first-child .tradingview-widget-container,
+.widget-section:nth-child(2) .tradingview-widget-container {
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--widget-bg);
+    border: 1px solid var(--border-color);
+    margin: 0 auto;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.widget-section:nth-child(3) {
+    grid-column: span 12;
+    height: 600px;
+    margin-top: 0;
+}
+
+.widget-section:nth-child(3) .widget-content {
+    height: 100%;
+}
+
+.widget-section:nth-child(3) .tradingview-widget-container {
+    height: 100% !important;
+}
+
+.widget-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.widget-header h2 {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+.widget-content {
+    padding: 1.5rem;
+}
+
+/* TradingView Widget Styles */
+.tradingview-widget-container {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--widget-bg);
+    transition: transform 0.3s ease;
+}
+
+.tradingview-widget-container.symbol-overview {
+    height: 900px;
+}
+
+.tradingview-widget-container.technical-analysis {
+    height: 600px;
+}
+
+.tradingview-widget-container.financials {
+    height: 700px;
 }
 
 .tradingview-widget-container__widget {
-    background: transparent !important;
-    flex: 1;
-    min-height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 /* Hide TradingView copyright */
-.tradingview-widget-copyright {
-    display: none !important;
+.tradingview-widget-copyright,
+.tradingview-widget-copyright a,
+.tradingview-widget-copyright .blue-text {
+    display: none;
 }
 
 /* Footer */
 .footer {
-    background-color: var(--heading-color);
-    color: white;
-    padding: 3rem 2rem;
-    text-align: right;
-    direction: rtl;
+    background: var(--darker-bg);
+    padding: 2rem;
+    border-top: 1px solid var(--border-color);
 }
 
-.footer-content p {
-    opacity: 0.8;
-    font-size: 0.95rem;
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 /* Responsive Design */
-@media (max-width: 1600px) {
-    .content-wrapper {
-        grid-template-columns: 1fr 350px;
-        padding: 0 1.5rem;
-    }
-}
-
 @media (max-width: 1400px) {
-    .content-wrapper {
-        grid-template-columns: 1fr 300px;
-        padding: 0 1.2rem;
+    .widget-grid {
+        gap: 1.5rem;
     }
-}
 
-@media (max-width: 1200px) {
-    .content-wrapper {
-        grid-template-columns: 1fr;
+    .widget-section:first-child .widget-content {
+        width: 100%;
         padding: 0 1rem;
     }
 
-    .sidenav {
-        grid-column: 1;
-        grid-row: auto;
-        width: 100%;
-        margin-top: 1rem;
-        position: relative;
-        top: 0;
+    .widget-section:first-child {
+        min-height: 1000px;
+    }
+
+    .widget-section:first-child .tradingview-widget-container,
+    .tradingview-widget-container.symbol-overview {
+        height: 1000px !important;
+    }
+
+    .tradingview-widget-container.technical-analysis {
+        height: 500px;
+    }
+
+    .tradingview-widget-container.financials {
         height: 600px;
     }
 }
 
-@media (max-width: 768px) {
-    .content-wrapper {
-        padding: 0 0.8rem;
+@media (max-width: 1200px) {
+    .widget-section:first-child,
+    .widget-section:nth-child(2) {
+        grid-column: span 12;
+        height: 400px;
+        margin-bottom: 0.5rem;
     }
 
-    .sidenav {
+    .widget-section:nth-child(3) {
         height: 500px;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-section {
+        gap: 1rem;
+    }
+
+    .stats-header {
+        padding: 1.5rem;
+    }
+
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .header-left {
+        align-items: center;
+    }
+
+    .language-switcher {
+        margin-top: 0.5rem;
+    }
+
+    .stats-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .back-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .widgets-container {
+        padding: 0 1rem 1rem;
+    }
+
+    .widget-grid {
+        gap: 0.5rem;
+    }
+
+    .widget-header {
+        padding: 1rem;
+    }
+
+    .widget-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .widget-content {
+        padding: 1rem;
+    }
+
+    .widget-section:first-child,
+    .widget-section:nth-child(2) {
+        height: 350px;
+        margin-bottom: 0.5rem;
+    }
+
+    .widget-section:nth-child(3) {
+        height: 450px;
+    }
+
+    .widget-section:first-child .widget-content,
+    .widget-section:nth-child(2) .widget-content {
+        padding: 0 0.5rem;
     }
 }
 
 @media (max-width: 480px) {
-    .content-wrapper {
-        padding: 0 0.8rem;
+    .stats-header {
+        padding: 1rem;
     }
 
-    .sidenav {
-        height: 500px;
+    .stats-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .back-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .widgets-container {
+        padding: 0 0.8rem 0.8rem;
+    }
+
+    .widget-grid {
+        gap: 0.5rem;
+    }
+
+    .widget-header {
+        padding: 0.8rem;
+    }
+
+    .widget-header h2 {
+        font-size: 1.1rem;
+    }
+
+    .widget-content {
+        padding: 0.8rem;
+    }
+
+    .widget-section:first-child,
+    .widget-section:nth-child(2) {
+        height: 300px;
+        margin-bottom: 0.5rem;
+    }
+
+    .widget-section:nth-child(3) {
+        height: 400px;
+    }
+
+    .widget-section:first-child .widget-content,
+    .widget-section:nth-child(2) .widget-content {
+        padding: 0;
     }
 } 
