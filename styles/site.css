@@ -55,6 +55,8 @@ body {
     margin: 0;
     min-height: 100vh;
     font-size: var(--font-size-base);
+    display: flex;
+    flex-direction: column;
 }
 
 /* Typography Updates */
@@ -260,9 +262,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    min-height: calc(100vh - var(--header-height) - var(--footer-height));
-    padding-top: var(--header-height);
-    padding-bottom: var(--footer-height);
+    padding: 1.5rem;
 }
 
 .content-wrapper {
@@ -2162,4 +2162,18 @@ h1, h2, h3, h4, h5, h6 {
         padding: 0.7rem 1rem;
         font-size: 0.95rem;
     }
+} 
+
+.article-frame {
+    width: 100%;
+    flex-grow: 1;
+    border: none;
+}
+
+.article-viewer-header {
+    flex-shrink: 0;
+}
+
+.footer {
+    flex-shrink: 0;
 } 
