@@ -12,207 +12,276 @@
     <script>
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
     </script>
+    <style>
+        .entry-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .entry-screen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .entry-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .main-content-wrapper {
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        .main-content-wrapper.show {
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
-    <main class="main-content">
-        <section id="hero" class="hero-section">
-            <div class="hero-content">
-                <div class="hero-left">
-                    <div class="logo">
-                        <img src="./static/logo.png" alt="Hippopotamus Research Logo" class="logo-image">
+    <!-- Entry Screen -->
+    <div class="entry-screen" id="entryScreen">
+        <video class="entry-video" id="entryVideo" autoplay muted playsinline>
+            <source src="static/entry.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content-wrapper" id="mainContent">
+        <main>
+            <section id="hero" class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-left">
+                        <div class="logo">
+                            <img src="./static/logo.png" alt="Hippopotamus Research Logo" class="logo-image">
+                        </div>
+                    </div>
+                    <div class="hero-right">
+                        <h2>Hippopotamus Research</h2>
+                        <p>ניתוח שוק עצמאי המשלב גישות טכניות ופונדמנטליות. מחקר מעמיק של שווקים פיננסיים, המבוסס על ניסיון מעשי וסקרנות אינטלקטואלית.</p>
+                        <a href="./articles.html" class="articles-btn">
+                            <i class="fas fa-book"></i>
+                            <span class="lang-text" data-he="לכל המאמרים" data-en="All Articles">לכל המאמרים</span>
+                        </a>
                     </div>
                 </div>
-                <div class="hero-right">
-                    <h2>Hippopotamus Research</h2>
-                    <p>ניתוח שוק עצמאי המשלב גישות טכניות ופונדמנטליות. מחקר מעמיק של שווקים פיננסיים, המבוסס על ניסיון מעשי וסקרנות אינטלקטואלית.</p>
-                    <a href="./articles.html" class="articles-btn">
-                        <i class="fas fa-book"></i>
-                        <span class="lang-text" data-he="לכל המאמרים" data-en="All Articles">לכל המאמרים</span>
-                    </a>
+            </section>
+
+            <div class="ticker-tape-container">
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                    {
+                        "symbols": [
+                            {
+                                "proName": "FOREXCOM:SPXUSD",
+                                "title": "S&P 500 Index"
+                            },
+                            {
+                                "proName": "FOREXCOM:NSXUSD",
+                                "title": "US 100 Cash CFD"
+                            },
+                            {
+                                "proName": "FX_IDC:EURUSD",
+                                "title": "EUR to USD"
+                            },
+                            {
+                                "proName": "BITSTAMP:BTCUSD",
+                                "title": "Bitcoin"
+                            },
+                            {
+                                "proName": "BITSTAMP:ETHUSD",
+                                "title": "Ethereum"
+                            }
+                        ],
+                        "showSymbolLogo": true,
+                        "isTransparent": true,
+                        "displayMode": "regular",
+                        "colorTheme": "light",
+                        "locale": "en"
+                    }
+                    </script>
                 </div>
+                <!-- TradingView Widget END -->
             </div>
-        </section>
-
-        <div class="ticker-tape-container">
-            <!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-  {
-  "symbols": [
-    {
-      "proName": "FOREXCOM:SPXUSD",
-      "title": "S&P 500 Index"
-    },
-    {
-      "proName": "FOREXCOM:NSXUSD",
-      "title": "US 100 Cash CFD"
-    },
-    {
-      "proName": "FX_IDC:EURUSD",
-      "title": "EUR to USD"
-    },
-    {
-      "proName": "BITSTAMP:BTCUSD",
-      "title": "Bitcoin"
-    },
-    {
-      "proName": "BITSTAMP:ETHUSD",
-      "title": "Ethereum"
-    }
-  ],
-  "showSymbolLogo": true,
-  "isTransparent": true,
-  "displayMode": "regular",
-  "colorTheme": "dark",
-  "locale": "en"
-}
-  </script>
-</div>
-<!-- TradingView Widget END -->
-        </div>
-        
-
-        <div class="content-wrapper">
-            <aside class="sidenav">
-                <div class="widget-wrapper">
-                    <div class="tradingview-widget-container">
-                        <div class="tradingview-widget-container__widget"></div>
-                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
-                        {
-                            "feedMode": "all_symbols",
-                            "isTransparent": true,
-                            "displayMode": "regular",
-                            "width": "100%",
-                            "height": "100%",
-                            "colorTheme": "light",
-                            "locale": "he",
-                            "utm_source": "thekinghippopotamus.github.io",
-                            "utm_medium": "widget",
-                            "utm_campaign": "timeline",
-                            "page-uri": "thekinghippopotamus.github.io/HippoResearch/index.html"
-                        };
-                        </script>
-                    </div>
-                </div>
-            </aside>
             
 
-            <div class="main-content-inner">
-                <section id="featured" class="featured-section">
-                    <h2>מאמרי מחקר אחרונים</h2>
-                    <div class="article-preview">
-                        <div class="article-image-container">
-                            <img src="./static/nvo.png" alt="ניתוח שוק NVO" class="article-preview-image">
+            <div class="content-wrapper">
+                <aside class="sidenav">
+                    <div class="widget-wrapper">
+                        <div class="tradingview-widget-container">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js" async>
+                            {
+                                "feedMode": "all_symbols",
+                                "colorTheme": "light",
+                                "isTransparent": true,
+                                "displayMode": "regular",
+                                "width": "100%",
+                                "height": "250",
+                                "locale": "en",
+                                "utm_source": "thekinghippopotamus.github.io",
+                                "utm_medium": "widget",
+                                "utm_campaign": "timeline"
+                            }
+                            </script>
                         </div>
-                        <div class="article-info">
-                            <div class="article-header">
+                    </div>
+                </aside>
+                
+
+                <div class="main-content-inner">
+                    <section id="featured" class="featured-section">
+                        <h2>מאמרי מחקר אחרונים</h2>
+                        <div class="article-card">
+                            <div class="card-image">
+                                <img src="./static/nvo.png" alt="ניתוח שוק NVO">
+                            </div>
+                            <div class="card-content">
                                 <h3>ניתוח אסטרטגי: Novo Nordisk (NVO)</h3>
-                            </div>
-                            <p class="article-description">מחקר מעמיק החושף את הסיפור שמאחורי המספרים. האם התמחור הנוכחי משקף את הפוטנציאל של החברה? בדוח זה נצלול לתוך דפוסי הצמיחה של נובו נורדיסק, ננתח את האיתותים שההנהלה שולחת לשוק דרך פעולותיה, ונבחן את הכוחות הטכניים והתמונה הפונדמנטלית — מהזוויות שפחות מדברים עליהן.</p>
-                            
-                            <div class="article-actions">
-                                <a href="./article-viewer.html?article=./research/nvo.html&title=ניתוח%20אסטרטגי:%20Novo%20Nordisk&date=פברואר%202025&readTime=זמן%20קריאה:%2010%20דקות&type=ניתוח%20שוק" class="read-article-btn">
-                                    <i class="fas fa-book-open"></i>
-                                    <span class="lang-text" data-he="קרא את המאמר" data-en="Read Article">קרא את המאמר</span>
-                                </a>
-                                <a href="./research/nvo-stats.html" class="stats-btn">
-                                    <i class="fas fa-chart-line"></i>
-                                    <span class="lang-text" data-he="סטטיסטיקה ונתונים" data-en="Statistics & Data">סטטיסטיקה ונתונים</span>
-                                </a>
-                                <a href="./research/nvo.pdf" class="download-article-btn" target="_blank">
-                                    <i class="fas fa-download"></i>
-                                    <span class="lang-text" data-he="הורד PDF" data-en="Download PDF">הורד PDF</span>
-                                </a>
-                            </div>
+                                <p class="card-description">מחקר מעמיק החושף את הסיפור שמאחורי המספרים. האם התמחור הנוכחי משקף את הפוטנציאל של החברה?</p>
+                                
+                                <div class="card-meta">
+                                    <span><i class="far fa-calendar"></i> מאי2025</span>
+                                    <span><i class="far fa-clock"></i> 10 דקות</span>
+                                    <span><i class="fas fa-chart-line"></i> ניתוח שוק</span>
+                                </div>
 
-                            <div class="article-meta">
-                                <span class="article-date"><i class="far fa-calendar"></i> מאי2025</span>
-                                <span class="article-read-time"><i class="far fa-clock"></i> זמן קריאה: 10 דקות</span>
-                                <span class="article-type"><i class="fas fa-chart-line"></i> ניתוח שוק</span>
+                                <div class="card-actions">
+                                    <a href="./article-viewer.html?article=./research/nvo.html&title=ניתוח%20אסטרטגי:%20Novo%20Nordisk&date=פברואר%202025&readTime=זמן%20קריאה:%2010%20דקות&type=ניתוח%20שוק" class="card-btn primary">
+                                        <i class="fas fa-book-open"></i>
+                                        <span>קריאה</span>
+                                    </a>
+                                    <div class="card-btn-group">
+                                        <a href="./research/nvo-stats.html" class="card-btn secondary" title="סטטיסטיקה">
+                                            <i class="fas fa-chart-line"></i>
+                                            <span>סטטיסטיקה</span>
+                                        </a>
+                                        <a href="./research/nvo.pdf" class="card-btn secondary" target="_blank" title="הורדה">
+                                            <i class="fas fa-download"></i>
+                                            <span>הורדה</span>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
 
-                <section id="about" class="about-section">
-                    <div class="about-content">
-                        <p>הגישה המחקרית של Hippopotamus Research מבוססת על שילוב ייחודי בין ניתוח טכני מתקדם לבין הבנה מעמיקה של היסודות הפיננסיים. המתודולוגיה שלנו מתאפיינת ב:</p>
-                        <ul class="research-approaches">
-                            <li><i class="fas fa-chart-line"></i> ניתוח טכני מתקדם המשלב מגמות שוק, מבנים גרפיים וזיהוי דפוסים</li>
-                            <li><i class="fas fa-balance-scale"></i> בחינה מעמיקה של נתונים פונדמנטליים, יחסים פיננסיים ומדדים כלכליים</li>
-                            <li><i class="fas fa-brain"></i> שילוב בין ניתוח נתונים כמותי להבנה איכותנית של השווקים</li>
-                            <li><i class="fas fa-book-reader"></i> התעדכנות מתמדת בשיטות מחקר חדשות וטכנולוגיות מתקדמות</li>
-                        </ul>
-                        <p>המחקר מיועד למשקיעים המחפשים הבנה מעמיקה של השווקים, תוך שילוב בין גישות שונות לניתוח השקעות. הגישה הייחודית שלנו מאפשרת זיהוי הזדמנויות והבנת סיכונים בצורה מקיפה ומעמיקה.</p>
-                    </div>
-                </section>
+                    <section id="about" class="info-card">
+                        <div class="card-content">
+                            <h2>הגישה המחקרית</h2>
+                            <p>הגישה המחקרית של Hippopotamus Research מבוססת על שילוב ייחודי בין ניתוח טכני מתקדם לבין הבנה מעמיקה של היסודות הפיננסיים. אנו משלבים מתודולוגיות מוכחות עם חדשנות מתמדת כדי לספק תובנות מעמיקות ומדויקות.</p>
+                            
+                            <div class="research-categories">
+                                <h3>ניתוח שוק מתקדם</h3>
+                                <ul class="research-approaches">
+                                    <li><i class="fas fa-chart-line"></i> ניתוח טכני מתקדם המשלב מגמות שוק, מבנים גרפיים וזיהוי דפוסים מורכבים</li>
+                                    <li><i class="fas fa-balance-scale"></i> בחינה מעמיקה של נתונים פונדמנטליים, יחסים פיננסיים ומדדים כלכליים מרכזיים</li>
+                                    <li><i class="fas fa-brain"></i> שילוב בין ניתוח נתונים כמותי להבנה איכותנית של דינמיקת השווקים</li>
+                                    <li><i class="fas fa-book-reader"></i> התעדכנות מתמדת בשיטות מחקר חדשות וטכנולוגיות מתקדמות בתחום</li>
+                                </ul>
 
-                <section class="contact-section">
+                                <h3>ניתוח סיכונים והזדמנויות</h3>
+                                <ul class="research-approaches">
+                                    <li><i class="fas fa-shield-alt"></i> זיהוי וניהול סיכונים שיטתיים וספציפיים בשוק</li>
+                                    <li><i class="fas fa-lightbulb"></i> איתור הזדמנויות השקעה מוסתרות באמצעות ניתוח מעמיק</li>
+                                    <li><i class="fas fa-chart-pie"></i> הערכת יחס סיכון-תשואה מדויקת לכל אסטרטגיה</li>
+                                </ul>
+
+                                <h3>מחקר מקרו-כלכלי</h3>
+                                <ul class="research-approaches">
+                                    <li><i class="fas fa-globe-americas"></i> ניתוח מגמות גלובליות והשפעתן על השווקים המקומיים</li>
+                                    <li><i class="fas fa-landmark"></i> מעקב אחר מדיניות מוניטרית ופיסקלית והשלכותיה</li>
+                                    <li><i class="fas fa-industry"></i> בחינת מגזרים כלכליים והשפעות גומלין ביניהם</li>
+                                </ul>
+
+                                <h3>טכנולוגיה וחדשנות</h3>
+                                <ul class="research-approaches">
+                                    <li><i class="fas fa-microchip"></i> שימוש בטכנולוגיות AI לזיהוי דפוסים וניתוח נתונים מתקדם</li>
+                                    <li><i class="fas fa-database"></i> מערכות ניטור בזמן אמת של שינויים בשווקים</li>
+                                    <li><i class="fas fa-robot"></i> אוטומציה של תהליכי ניתוח וזיהוי איתותים</li>
+                                </ul>
+                            </div>
+
+                            <p class="research-summary">המחקר שלנו מיועד למשקיעים המחפשים הבנה מעמיקה של השווקים, תוך שילוב בין גישות שונות לניתוח השקעות. הגישה הייחודית שלנו מאפשרת זיהוי הזדמנויות והבנת סיכונים בצורה מקיפה ומעמיקה, תוך התאמה אישית לצרכים הספציפיים של כל לקוח.</p>
+                        </div>
+                    </section>
+
+                    <hr>
                     <h2>צור קשר</h2>
-                    <p>לפניות, שאלות או בקשות לניתוח מפורט של מניה או שוק ספציפי:</p>
+                    <p>לפניות, שאלות או בקשות לניתוח מפורט:                            <a href="https://x.com/LmlyhNyr" target="_blank" rel="noopener" class="contact-link">
+                        <i class="fa-brands fa-x-twitter"></i>
+                        @LmlyhNyr
+                    </a></p>
                     
-                    <div class="contact-info">
-                        <a href="mailto:king.hippopotamus@yahoo.com?subject=פנייה%20לHippopotamus%20Research" class="contact-link">
-                            <i class="fas fa-envelope"></i>
-                            king.hippopotamus@yahoo.com
-                        </a>
-                        <a href="https://x.com/intent/follow?screen_name=LmlyhNyr" target="_blank" rel="noopener" class="contact-link">
-                            <i class="fa-brands fa-x-twitter"></i>
-                            @LmlyhNyr
-                        </a>
+             
                     </div>
 
                     <form class="contact-form" action="https://formspree.io/f/mwpoyyoq" method="POST" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="email">כתובת אימייל:</label>
-                            <input type="email" id="email" name="email" required placeholder="הזן כתובת אימייל">
+                        <div class="form-group email-group">
+                            <label for="email">אימייל:</label>
+                            <input type="email" id="email" name="email" required placeholder="הכנס כתובת אימייל">
                         </div>
                         
-                        <div class="form-group">
-                            <label for="message">פרטי הפנייה:</label>
-                            <textarea id="message" name="message" required placeholder="פרט את הפנייה שלך..."></textarea>
+                        <div class="form-group message-group">
+                            <label for="message">הודעה:</label>
+                            <textarea id="message" name="message" required placeholder="הכנס את הודעתך..."></textarea>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="upload">קבצים מצורפים (אופציונלי):</label>
+                        <div class="form-group file-group">
+                            <label for="upload">קבצים מצורפים:</label>
                             <input type="file" id="upload" name="upload" accept=".pdf,.doc,.docx,.xls,.xlsx">
-                            <small>ניתן לצרף קבצי PDF, Word או Excel</small>
+                            <small>PDF, Word, Excel</small>
                         </div>
                         
-                        <button type="submit" class="submit-btn">
-                            <i class="fas fa-paper-plane"></i>
-                            שלח פנייה
-                        </button>
-                    </form>
-                </section>
-
-                <section id="disclaimer" class="disclaimer-section">
-                    <div class="disclaimer-content">
-                        <h2>📜 Disclaimer – Hippopotamus Research</h2>
-                        <div class="disclaimer-text">
-                            <p>המידע המוצג במסמכים, דוחות, גרפים וניתוחים תחת השם Hippopotamus Research נועד למטרות מידע, למידה ודיון בלבד, ואינו מהווה ייעוץ השקעות, ייעוץ פיננסי, ייעוץ משפטי או המלצה לרכישה או מכירה של ניירות ערך מכל סוג.</p>
-                            
-                            <p>הניתוחים הכלולים במחקר מסתמכים על מקורות נתונים גלויים לציבור, מידע פיננסי, תחזיות שוק, מגמות מאקרו־כלכליות והערכות מודלים, אולם אין התחייבות או ערובה לדיוק, שלמות או עדכניות המידע. כל מסקנה, תחזית או הבעת דעה הינה אישית ואינה מייצגת גורם מוסדי, רגולטורי או מסחרי כלשהו.</p>
-                            
-                            <p>Hippopotamus Research ו/או מי מטעמה אינם נושאים באחריות כלשהי לכל נזק, הפסד או הוצאה – ישירה או עקיפה – שייגרמו כתוצאה משימוש במידע הכלול במסמך זה. כל פעולה פיננסית, מסחרית או השקעתית נעשית על אחריות המשתמש בלבד.</p>
-                            
-                            <p>אין לראות בשום חלק מהמחקר משום התחייבות לתשואה, הבטחת הצלחה או ציון דרך עתידי ודאי. השקעות כרוכות בסיכון, לרבות סיכון להפסד קרן ההשקעה, ויש להתייעץ עם גורם מוסמך בטרם קבלת החלטות.</p>
-                            
-                            <p class="copyright">© כל הזכויות שמורות ל־Hippopotamus Research. אין להעתיק, לשכפל, להפיץ או לפרסם כל חלק מהמסמך ללא רשות מפורשת ובכתב.</p>
+                        <div class="form-group submit-group">
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                שלח
+                            </button>
                         </div>
-                    </div>
-                </section>
-            </div>
-        </div>
+                    </form>
+                </div>
+            </section>
 
-        <footer class="footer">
-            <div class="footer-content">
-                <p>&copy; 2025 Hippopotamus Research. All rights reserved.</p>
-            </div>
-        </footer>
-    </main>
+            <section id="disclaimer" class="disclaimer-section">
+                <div class="disclaimer-content">
+                    <h2>📜 Disclaimer – Hippopotamus Research</h2>
+                    <div class="disclaimer-text">
+                        <p>המידע המוצג במסמכים, דוחות, גרפים וניתוחים תחת השם Hippopotamus Research נועד למטרות מידע, למידה ודיון בלבד, ואינו מהווה ייעוץ השקעות, ייעוץ פיננסי, ייעוץ משפטי או המלצה לרכישה או מכירה של ניירות ערך מכל סוג.</p>
+                        
+                        <p>הניתוחים הכלולים במחקר מסתמכים על מקורות נתונים גלויים לציבור, מידע פיננסי, תחזיות שוק, מגמות מאקרו־כלכליות והערכות מודלים, אולם אין התחייבות או ערובה לדיוק, שלמות או עדכניות המידע. כל מסקנה, תחזית או הבעת דעה הינה אישית ואינה מייצגת גורם מוסדי, רגולטורי או מסחרי כלשהו.</p>
+                        
+                        <p>Hippopotamus Research ו/או מי מטעמה אינם נושאים באחריות כלשהי לכל נזק, הפסד או הוצאה – ישירה או עקיפה – שייגרמו כתוצאה משימוש במידע הכלול במסמך זה. כל פעולה פיננסית, מסחרית או השקעתית נעשית על אחריות המשתמש בלבד.</p>
+                        
+                        <p>אין לראות בשום חלק מהמחקר משום התחייבות לתשואה, הבטחת הצלחה או ציון דרך עתידי ודאי. השקעות כרוכות בסיכון, לרבות סיכון להפסד קרן ההשקעה, ויש להתייעץ עם גורם מוסמך בטרם קבלת החלטות.</p>
+                        
+                        <p class="copyright">© כל הזכויות שמורות ל־Hippopotamus Research. אין להעתיק, לשכפל, להפיץ או לפרסם כל חלק מהמסמך ללא רשות מפורשת ובכתב.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Hippopotamus Research. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="./js/main.js"></script>
     <script>
@@ -254,6 +323,46 @@
                     }
                 });
             }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const entryScreen = document.getElementById('entryScreen');
+            const entryVideo = document.getElementById('entryVideo');
+            const mainContent = document.getElementById('mainContent');
+
+            // Function to start transition
+            function startTransition() {
+                entryScreen.classList.add('fade-out');
+                mainContent.classList.add('show');
+                
+                // Remove entry screen after fade out
+                setTimeout(() => {
+                    entryScreen.remove();
+                }, 500);
+            }
+
+            // When video is playing, check time
+            entryVideo.addEventListener('timeupdate', function() {
+                // If video is 3 seconds from end
+                if (entryVideo.duration - entryVideo.currentTime <= 3) {
+                    startTransition();
+                    // Remove the event listener to prevent multiple triggers
+                    entryVideo.removeEventListener('timeupdate', arguments.callee);
+                }
+            });
+
+            // When video ends (backup in case timeupdate doesn't trigger)
+            entryVideo.addEventListener('ended', function() {
+                if (!mainContent.classList.contains('show')) {
+                    startTransition();
+                }
+            });
+
+            // Skip entry screen on click
+            entryScreen.addEventListener('click', function() {
+                entryVideo.pause();
+                startTransition();
+            });
         });
     </script>
 </body>
