@@ -357,47 +357,50 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 1;
     overflow: hidden;
     height: 40px; /* Keep desktop height */
+    min-height: 40px; /* Ensure minimum height */
 }
 
 .ticker-tape-container .tradingview-widget-container {
     height: 35px !important; /* Keep desktop height */
-    min-height: 35px !important;
+    min-height: 35px !important; /* Ensure minimum height */
     max-height: 35px !important;
 }
 
 .ticker-tape-container .tradingview-widget-container__widget {
     height: 35px !important; /* Keep desktop height */
-    min-height: 35px !important;
+    min-height: 35px !important; /* Ensure minimum height */
     max-height: 35px !important;
 }
 
 /* Adjustments for Ticker Tape on Mobile */
 @media (max-width: 768px) {
     .ticker-tape-container {
-        height: 35px; /* Slightly smaller height on mobile */
+        height: 40px; /* Adjusted height on mobile */
+        min-height: 40px; /* Ensure minimum height on mobile */
         margin-bottom: 1.5rem; /* Reduced bottom margin on mobile */
         padding: 0.2rem 0;
     }
 
     .ticker-tape-container .tradingview-widget-container,
     .ticker-tape-container .tradingview-widget-container__widget {
-        height: 30px !important; /* Adjusted height on mobile */
-        min-height: 30px !important;
-        max-height: 30px !important;
+        height: 35px !important; /* Adjusted height on mobile */
+        min-height: 35px !important; /* Ensure minimum height on mobile */
+        max-height: 35px !important;
     }
 }
 
 @media (max-width: 480px) {
     .ticker-tape-container {
-        height: 30px; /* Even smaller height on very small screens */
+        height: 35px; /* Adjusted height on very small screens */
+        min-height: 35px; /* Ensure minimum height on very small screens */
         margin-bottom: 1rem; /* Further reduced bottom margin */
     }
 
     .ticker-tape-container .tradingview-widget-container,
     .ticker-tape-container .tradingview-widget-container__widget {
-        height: 25px !important; /* Adjusted height on very small screens */
-        min-height: 25px !important;
-        max-height: 25px !important;
+        height: 30px !important; /* Adjusted height on very small screens */
+        min-height: 30px !important; /* Ensure minimum height on very small screens */
+        max-height: 30px !important;
     }
 }
 

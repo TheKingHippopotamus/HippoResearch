@@ -280,59 +280,6 @@
                     }
                 });
             }
-
-            // Adjust Ticker Tape widget display mode based on screen size
-            const tickerTapeScript = document.querySelector('.ticker-tape-container script');
-            if (tickerTapeScript) {
-                const widgetConfig = JSON.parse(tickerTapeScript.textContent.replace(';', ''));
-                
-                function updateTickerDisplayMode() {
-                    const currentDisplayMode = widgetConfig.displayMode;
-                    let newDisplayMode = currentDisplayMode;
-
-                    if (window.innerWidth <= 768) {
-                        // Switch to compact on mobile if not already
-                        if (currentDisplayMode !== "compact") {
-                            newDisplayMode = "compact";
-                        }
-                    } else {
-                        // Revert to adaptive on desktop if not already
-                         if (currentDisplayMode !== "adaptive") {
-                             newDisplayMode = "adaptive";
-                         }
-                    }
-
-                    if (newDisplayMode !== currentDisplayMode) {
-                         widgetConfig.displayMode = newDisplayMode;
-                         // This is tricky. Simply changing the config object might not update the widget.
-                         // The standard way is to re-embed the widget or use TradingView's API if available.
-                         // Since we don't have access to TradingView's internal JS API easily, 
-                         // the most reliable way is to remove and re-add the script tag with the updated config.
-
-                         const newScript = document.createElement('script');
-                         newScript.type = 'text/javascript';
-                         newScript.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
-                         newScript.async = true;
-                         // Convert the updated config object back to a string
-                         newScript.textContent = JSON.stringify(widgetConfig) + ';';
-
-                         // Replace the old script with the new one
-                         tickerTapeScript.parentNode.replaceChild(newScript, tickerTapeScript);
-                         // Update the reference to the new script tag
-                         tickerTapeScript = newScript;
-                    }
-                }
-                
-                // Initial check on load
-                updateTickerDisplayMode();
-
-                // Update on window resize (with debounce for performance)
-                let resizeTimer;
-                window.addEventListener('resize', () => {
-                    clearTimeout(resizeTimer);
-                    resizeTimer = setTimeout(updateTickerDisplayMode, 100);
-                });
-            }
         });
     </script>
 </body>
