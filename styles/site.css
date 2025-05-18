@@ -1437,6 +1437,13 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
 }
 
+.card-btn-group {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .card-btn {
     display: inline-flex;
     align-items: center;
@@ -1459,13 +1466,6 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(135deg, #997ba8, #bcd8eb);
     color: #000000;
     border: 1px solid rgba(153, 123, 168, 0.2);
-}
-
-.card-btn.primary:hover {
-    background: linear-gradient(135deg, #8a6a99, #a9c5d9);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(153, 123, 168, 0.15);
-    border-color: rgba(153, 123, 168, 0.3);
 }
 
 .card-btn.secondary {
@@ -1520,6 +1520,13 @@ h1, h2, h3, h4, h5, h6 {
     .card-actions {
         flex-direction: column;
         gap: 0.8rem;
+        margin-top: 0.8rem;
+    }
+    
+    .card-btn-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.8rem;
     }
     
     .card-btn {
@@ -1571,7 +1578,13 @@ h1, h2, h3, h4, h5, h6 {
     .card-actions {
         flex-direction: column;
         gap: 0.8rem;
-        margin-top: 1rem;
+        margin-top: 0.8rem;
+    }
+
+    .card-btn-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.8rem;
     }
 
     .card-btn {
@@ -1614,6 +1627,15 @@ h1, h2, h3, h4, h5, h6 {
 
     .card-content {
         padding: 1rem;
+    }
+
+    .card-actions {
+        gap: 0.6rem;
+        margin-top: 0.6rem;
+    }
+
+    .card-btn-group {
+        gap: 0.6rem;
     }
 
     .card-btn {
