@@ -770,6 +770,11 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-text-fill-color: transparent;
 }
 
+.stats-header .nav-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
 .stats-nav-button {
     display: inline-flex;
     align-items: center;
@@ -783,6 +788,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid var(--border-color);
+    white-space: nowrap;
 }
 
 .stats-nav-button:hover {
@@ -797,6 +803,19 @@ h1, h2, h3, h4, h5, h6 {
 
 .stats-nav-button:hover i {
     transform: translateX(3px);
+}
+
+.stats-nav-button.download-btn {
+    background: rgba(34, 171, 148, 0.2);
+    border-color: rgba(34, 171, 148, 0.3);
+}
+
+.stats-nav-button.download-btn:hover {
+    background: rgba(34, 171, 148, 0.3);
+}
+
+.stats-nav-button.download-btn i {
+    color: #22ab94;
 }
 
 .language-switcher {
@@ -988,6 +1007,20 @@ h1, h2, h3, h4, h5, h6 {
     .form-group textarea {
         padding: 0.8rem;
     }
+
+    .stats-header .nav-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .stats-nav-button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .stats-nav-button.download-btn {
+        margin-top: 0.5rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1095,6 +1128,20 @@ h1, h2, h3, h4, h5, h6 {
     .form-group input,
     .form-group textarea {
         padding: 0.8rem;
+    }
+
+    .stats-header .nav-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .stats-nav-button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .stats-nav-button.download-btn {
+        margin-top: 0.5rem;
     }
 }
 
