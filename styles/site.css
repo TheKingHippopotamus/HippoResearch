@@ -1134,27 +1134,26 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .widget-grid {
-        grid-template-columns: 1fr; /* Stack widgets vertically */
+        grid-template-columns: 1fr;
         gap: 1rem;
     }
 
     .widget-section {
-        grid-column: span 1 !important; /* Override any other grid spans */
-        height: auto !important; /* Remove fixed heights */
-        min-height: 300px; /* Set minimum height */
-        overflow: hidden; /* Hide overflowing content */
+        grid-column: span 1 !important;
+        height: auto !important;
+        min-height: 300px;
+        overflow: hidden;
     }
 
     .widget-section:first-child,
     .widget-section:nth-child(2) {
-        height: 350px !important; /* Adjusted height for mobile */
+        height: 350px !important;
     }
 
     .widget-section:nth-child(3) {
-        height: 450px !important; /* Adjusted height for mobile */
+        height: 450px !important;
     }
 
-    /* Ensure iframes fit their containers on mobile */
     .widget-section iframe {
         width: 100% !important;
         height: 100% !important;
@@ -1166,7 +1165,6 @@ h1, h2, h3, h4, h5, h6 {
         display: block;
     }
 
-    /* Adjust header for mobile */
     .stats-header {
         padding: 1rem;
     }
@@ -1182,7 +1180,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .stats-header .logo-image {
-        height: 80px; /* Smaller logo on mobile */
+        height: 80px;
     }
 
     .stats-header h1 {
@@ -1200,6 +1198,11 @@ h1, h2, h3, h4, h5, h6 {
         justify-content: center;
         padding: 0.8rem 1.2rem;
         font-size: 1rem;
+    }
+    
+    /* Adjust spacing for featured section on mobile */
+    .featured-section {
+        margin-top: 2rem; /* Add space above featured section */
     }
 }
 
@@ -1260,16 +1263,26 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .widget-section {
-        min-height: 250px; /* Smaller min height on very small screens */
+        min-height: 250px;
     }
 
     .widget-section:first-child,
     .widget-section:nth-child(2) {
-        height: 300px !important; /* Even smaller height for very small screens */
+        height: 300px !important;
     }
 
     .widget-section:nth-child(3) {
         height: 400px !important;
+    }
+
+    .widget-section iframe {
+        transform: scale(0.95) !important; /* Slight scale down if needed */
+        transform-origin: top left !important; /* Scale from top left */
+        width: calc(100% / 0.95) !important; /* Compensate width */
+        height: calc(100% / 0.95) !important; /* Compensate height */
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block;
     }
 
     .stats-header {
@@ -1288,11 +1301,16 @@ h1, h2, h3, h4, h5, h6 {
         padding: 0.7rem 1rem;
         font-size: 0.95rem;
     }
+    
+    /* Adjust spacing for featured section on very small screens */
+    .featured-section {
+        margin-top: 1.5rem; /* Add space above featured section */
+    }
 }
 
 /* Featured Article Section */
 .featured-section {
-    margin: 2rem 0;
+    margin: 3rem 0 2rem 0; /* Increased top margin for desktop */
 }
 
 .featured-section h2 {
