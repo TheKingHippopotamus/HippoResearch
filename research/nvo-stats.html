@@ -159,6 +159,31 @@
     </footer>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const backButton = document.querySelector('a[href*="article-viewer.html"]');
+            // Check screen width on load and potentially update the link
+            updateBackButtonLink();
+
+            // Also update if window is resized
+            window.addEventListener('resize', updateBackButtonLink);
+
+            function updateBackButtonLink() {
+                // Adjust the threshold as needed, 768px is a common mobile breakpoint
+                if (window.innerWidth <= 768) {
+                    if (backButton) {
+                        backButton.href = '../research/nvo.html';
+                    }
+                } else {
+                    // Revert to original link on larger screens if it was changed
+                    // Note: This assumes the original href is the one set in HTML. If the HTML is edited, this might need adjustment.
+                    // A more robust way might be to store the original href, but for simplicity, we'll rely on the initial HTML value.
+                    if (backButton && backButton.href.includes('../research/nvo.html')) {
+                         backButton.href = '../article-viewer.html?article=research/nvo.html&title=ניתוח%20שוק%20-%20Novo%20Nordisk&date=פברואר%202024&readTime=זמן%20קריאה:%2010%20דקות&type=ניתוח%20שוק';
+                    }
+                }
+            }
+        });
+
         // Language Switcher
         document.addEventListener('DOMContentLoaded', function() {
             const langBtns = document.querySelectorAll('.lang-btn');
