@@ -2,10 +2,10 @@
 const articles = [
     {
         id: 1,
-        title: "Market Trends Analysis 2024",
+        title: "Market Trends Analysis 2025",
         category: "Market Analysis",
         summary: "An in-depth analysis of current market trends and future projections.",
-        date: "2024-03-15",
+        date: "2025-03-15",
         readTime: "10 min read"
     },
     {
@@ -13,7 +13,7 @@ const articles = [
         title: "Global Financial Institutions Report",
         category: "Financial Institutions",
         summary: "Comprehensive research on the state of global financial institutions.",
-        date: "2024-03-10",
+        date: "2025-03-10",
         readTime: "15 min read"
     },
     // Add more articles as needed

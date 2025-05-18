@@ -5,7 +5,7 @@ const articles = [
         title: "אחרי ירידה חדה במחיר המניה מכ־$148 לשפל של $64 (ירידה של כ־57%), עולה שאלה מהותית: האם מדובר בצניחה מוצדקת, או בתמחור חסר קלאסי?",
         excerpt: "ניתוח מעמיק של הירידה החדה במחיר המניה והשלכותיה על שווי החברה. המאמר בוחן את הגורמים לירידה, השוואה למתחרים, והערכת פוטנציאל ההתאוששות.",
         category: "Market Analysis",
-        date: "2024-03-20",
+        date: "2025-03-20",
         readTime: "12 min read",
         image: "static/article-placeholder.jpg",
         author: "ניר אלמליח",
@@ -16,7 +16,7 @@ const articles = [
         title: "The Impact of Global Economic Trends on Emerging Markets",
         excerpt: "An in-depth analysis of how global economic trends are shaping emerging markets and investment opportunities...",
         category: "Market Analysis",
-        date: "2024-03-15",
+        date: "2025-03-15",
         readTime: "15 min read",
         image: "static/article-placeholder.jpg",
         author: "Research Team"
