@@ -270,10 +270,10 @@ h1, h2, h3, h4, h5, h6 {
 .hero-section {
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     color: rgb(47, 2, 66);
-    padding: 2rem 1.5rem;
+    padding: 4rem 1.5rem;
     position: relative;
     overflow: hidden;
-    min-height: 30vh;
+    min-height: 40vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -419,17 +419,28 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .hero-section {
-        padding: 1.2rem 0.8rem;
+        padding: 2rem 1rem;
+        min-height: 35vh;
     }
 
     .hero-content {
-        gap: 1.5rem;
-        padding: 0 0.8rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero-right {
+        text-align: center;
+        direction: ltr;
+    }
+
+    .hero-content .logo {
+        margin-bottom: 1.5rem;
     }
 
     .hero-content .logo-image {
-        height: 120px;
-        max-width: 280px;
+        height: 100px;
+        max-width: 200px;
     }
 
     .article-preview {
@@ -586,33 +597,52 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .hero-section {
-        padding: 1.2rem 0.8rem;
+        padding: 1.5rem 0.8rem;
+        min-height: 30vh;
     }
 
     .hero-content {
         gap: 1.5rem;
-        padding: 0 0.8rem;
     }
 
     .hero-content .logo-image {
-        height: 120px;
-        max-width: 280px;
+        height: 100px;
+        max-width: 200px;
     }
 
-    .article-preview {
-        margin: 0 0.8rem;
-        border-radius: 12px;
+    .hero-right h2 {
+        font-size: 1.8rem;
     }
 
-    .article-info {
-        padding: 1rem;
+    .hero-right p {
+        font-size: 1rem;
+    }
+
+    .articles-btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .featured-section h2,
+    .about-section h2,
+    .contact-section h2,
+    .disclaimer-section h2 {
+        font-size: 1.6rem;
+    }
+
+    .article-header h3 {
+        font-size: 1.4rem;
+    }
+
+    .article-description {
+        font-size: 1rem;
     }
 
     .about-section,
     .contact-section,
     .disclaimer-section {
-        margin: 1.5rem 0.8rem;
         padding: 1.5rem;
+        margin: 1.5rem 0;
     }
 
     .widgets-container {
@@ -700,6 +730,41 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .card-btn.primary {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-section {
+        padding: 1rem 0.5rem;
+        min-height: 25vh;
+    }
+
+    .hero-content {
+        gap: 1rem;
+    }
+
+    .hero-content .logo-image {
+        height: 80px;
+        max-width: 150px;
+    }
+
+    .hero-right h2 {
+        font-size: 1.6rem;
+    }
+
+    .hero-right p {
+        font-size: 0.9rem;
+    }
+
+    .articles-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+    }
+
+    .card-btn {
+        height: 36px;
+        padding: 0.5rem 0.8rem;
         font-size: 0.8rem;
     }
 }
