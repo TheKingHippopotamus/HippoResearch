@@ -1105,12 +1105,18 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .widget-section {
-        grid-column: span 1;
-        height: 300px;
+        grid-column: span 1 !important;
+        height: auto !important;
+        min-height: 300px;
+    }
+
+    .widget-section:first-child,
+    .widget-section:nth-child(2) {
+        height: 350px !important;
     }
 
     .widget-section:nth-child(3) {
-        height: 400px;
+        height: 450px !important;
     }
 
     .widget-content .tradingview-widget-container,
@@ -1125,10 +1131,10 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .sidenav-widget iframe {
-        transform: scale(0.6);
-        width: 166.67% !important;
-        height: 166.67% !important;
-        margin-left: -66.67%;
+        transform: none !important;
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
     }
 
     .articles-btn,
@@ -1226,12 +1232,13 @@ h1, h2, h3, h4, h5, h6 {
         gap: 0.8rem;
     }
 
-    .widget-section {
-        height: 250px;
+    .widget-section:first-child,
+    .widget-section:nth-child(2) {
+        height: 300px !important;
     }
 
     .widget-section:nth-child(3) {
-        height: 350px;
+        height: 400px !important;
     }
 
     .widget-section:first-child iframe,
