@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl" class="article-viewer">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,113 @@
     <link rel="stylesheet" href="/HippoResearch/styles/site.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .article-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .article-content h1, 
+        .article-content h2, 
+        .article-content h3 {
+            color: var(--heading-color);
+            margin: 1.5rem 0 1rem;
+            line-height: 1.4;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .article-content ul, 
+        .article-content ol {
+            margin: 1rem 0;
+            padding-right: 1.5rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .article-content blockquote {
+            border-right: 4px solid var(--primary-color);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            background: rgba(153, 123, 168, 0.05);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .article-content code {
+            background: rgba(153, 123, 168, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .article-content pre {
+            background: rgba(153, 123, 168, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .article-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .article-content th, 
+        .article-content td {
+            padding: 0.8rem;
+            border: 1px solid rgba(153, 123, 168, 0.2);
+            text-align: right;
+        }
+
+        .article-content th {
+            background: rgba(153, 123, 168, 0.1);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .article-content {
+                padding: 1.5rem 1rem;
+                margin: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .article-content {
+                padding: 1rem 0.8rem;
+                margin: 0 0.8rem;
+            }
+
+            .article-content h1 {
+                font-size: 1.6rem;
+            }
+
+            .article-content h2 {
+                font-size: 1.4rem;
+            }
+
+            .article-content h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="article-viewer-header">
@@ -32,45 +139,73 @@
         </div>
     </header>
 
-    <main class="article-viewer-main">
-        <div class="article-frame-container">
-            <iframe id="articleFrame" class="article-frame" src="" frameborder="0"></iframe>
+    <main class="main-content">
+        <div id="articleContent" class="article-content">
+            <div class="loading-indicator">
+                <i class="fas fa-spinner fa-spin"></i>
+                טוען מאמר...
+            </div>
         </div>
     </main>
 
-    <footer class="article-viewer-footer">
+    <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2025 Hippopotamus Research. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // פונקציה לטעינת המאמר
-        function loadArticle(articlePath) {
-            const frame = document.getElementById('articleFrame');
-            frame.src = articlePath;
+        async function loadArticle(articlePath) {
+            const contentDiv = document.getElementById('articleContent');
+            const loadingIndicator = contentDiv.querySelector('.loading-indicator');
             
-            // עדכון כותרת הדף בהתאם למאמר
-            const articleTitle = document.getElementById('articleTitle');
-            const articleDate = document.getElementById('articleDate');
-            const articleReadTime = document.getElementById('articleReadTime');
-            const articleType = document.getElementById('articleType');
-            
-            // כאן אפשר להוסיף לוגיקה לקבלת המידע מהמאמר
-            // לדוגמה, אפשר להשתמש ב-URL parameters או ב-localStorage
-            const urlParams = new URLSearchParams(window.location.search);
-            const title = urlParams.get('title') || 'מאמר מחקר';
-            const date = urlParams.get('date') || 'מאי2025';
-            const readTime = urlParams.get('readTime') || 'זמן קריאה: 10 דקות';
-            const type = urlParams.get('type') || 'ניתוח שוק';
-            
-            articleTitle.textContent = title;
-            articleDate.textContent = date;
-            articleReadTime.textContent = readTime;
-            articleType.textContent = type;
-            
-            // עדכון כותרת הדף
-            document.title = `${title} | Hippopotamus Research`;
+            try {
+                // טעינת המאמר
+                const response = await fetch(articlePath);
+                if (!response.ok) {
+                    throw new Error('שגיאה בטעינת המאמר');
+                }
+                const content = await response.text();
+                
+                // עדכון כותרת הדף והמטא-דאטה
+                const urlParams = new URLSearchParams(window.location.search);
+                const title = urlParams.get('title') || 'מאמר מחקר';
+                const date = urlParams.get('date') || 'מאי2025';
+                const readTime = urlParams.get('readTime') || 'זמן קריאה: 10 דקות';
+                const type = urlParams.get('type') || 'ניתוח שוק';
+                
+                document.getElementById('articleTitle').textContent = title;
+                document.getElementById('articleDate').textContent = date;
+                document.getElementById('articleReadTime').textContent = readTime;
+                document.getElementById('articleType').textContent = type;
+                document.title = `${title} | Hippopotamus Research`;
+                
+                // הסרת אינדיקטור הטעינה והצגת התוכן
+                loadingIndicator.remove();
+                contentDiv.innerHTML = content;
+                
+                // הוספת סגנונות לתוכן המאמר
+                const articleImages = contentDiv.getElementsByTagName('img');
+                for (let img of articleImages) {
+                    img.loading = 'lazy';
+                    if (!img.alt) {
+                        img.alt = 'תמונה במאמר';
+                    }
+                }
+                
+            } catch (error) {
+                contentDiv.innerHTML = `
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p>אירעה שגיאה בטעינת המאמר. אנא נסה שוב מאוחר יותר.</p>
+                        <a href="./articles.html" class="nav-button">
+                            <i class="fas fa-arrow-right"></i>
+                            חזרה למאמרים
+                        </a>
+                    </div>
+                `;
+                console.error('Error loading article:', error);
+            }
         }
 
         // טעינת המאמר בהתאם לפרמטרים ב-URL
