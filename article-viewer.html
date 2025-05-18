@@ -24,33 +24,39 @@
             margin: 1rem 0;
         }
 
-        .article-content h1, 
-        .article-content h2, 
-        .article-content h3 {
-            color: var(--heading-color);
-            margin: 1.5rem 0 1rem;
-            line-height: 1.4;
-        }
-
         .article-content p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             line-height: 1.6;
+            font-size: 1.1rem;
+            color: var(--text-color);
         }
 
-        .article-content ul, 
-        .article-content ol {
+        .article-content h2 {
+            margin: 2rem 0 1rem;
+            color: var(--heading-color);
+            font-size: 1.6rem;
+        }
+
+        .article-content h3 {
+            margin: 1.5rem 0 1rem;
+            color: var(--heading-color);
+            font-size: 1.3rem;
+        }
+
+        .article-content ul, .article-content ol {
             margin: 1rem 0;
             padding-right: 1.5rem;
         }
 
         .article-content li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
         }
 
         .article-content blockquote {
-            border-right: 4px solid var(--primary-color);
-            padding: 1rem;
             margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            border-right: 4px solid var(--primary-color);
             background: rgba(153, 123, 168, 0.05);
             border-radius: 0 8px 8px 0;
         }
@@ -60,6 +66,7 @@
             padding: 0.2rem 0.4rem;
             border-radius: 4px;
             font-family: monospace;
+            font-size: 0.9em;
         }
 
         .article-content pre {
@@ -70,39 +77,31 @@
             margin: 1rem 0;
         }
 
+        .article-content pre code {
+            background: none;
+            padding: 0;
+        }
+
         .article-content table {
             width: 100%;
             border-collapse: collapse;
             margin: 1.5rem 0;
         }
 
-        .article-content th, 
-        .article-content td {
+        .article-content th, .article-content td {
             padding: 0.8rem;
             border: 1px solid rgba(153, 123, 168, 0.2);
             text-align: right;
         }
 
         .article-content th {
-            background: rgba(153, 123, 168, 0.1);
+            background: rgba(153, 123, 168, 0.05);
             font-weight: 600;
         }
 
         @media (max-width: 768px) {
             .article-content {
                 padding: 1.5rem 1rem;
-                margin: 0 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .article-content {
-                padding: 1rem 0.8rem;
-                margin: 0 0.8rem;
-            }
-
-            .article-content h1 {
-                font-size: 1.6rem;
             }
 
             .article-content h2 {
@@ -111,6 +110,28 @@
 
             .article-content h3 {
                 font-size: 1.2rem;
+            }
+
+            .article-content p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .article-content {
+                padding: 1.2rem 0.8rem;
+            }
+
+            .article-content h2 {
+                font-size: 1.3rem;
+            }
+
+            .article-content h3 {
+                font-size: 1.1rem;
+            }
+
+            .article-content p {
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -156,18 +177,25 @@
 
     <script>
         async function loadArticle(articlePath) {
-            const contentDiv = document.getElementById('articleContent');
-            const loadingIndicator = contentDiv.querySelector('.loading-indicator');
+            const articleContent = document.getElementById('articleContent');
+            const loadingIndicator = articleContent.querySelector('.loading-indicator');
             
             try {
                 // טעינת המאמר
                 const response = await fetch(articlePath);
-                if (!response.ok) {
-                    throw new Error('שגיאה בטעינת המאמר');
-                }
-                const content = await response.text();
+                if (!response.ok) throw new Error('Failed to load article');
                 
-                // עדכון כותרת הדף והמטא-דאטה
+                const html = await response.text();
+                
+                // יצירת DOM זמני כדי לחלץ את תוכן ה-body
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const articleBody = doc.querySelector('body');
+                
+                // עדכון התוכן
+                articleContent.innerHTML = articleBody.innerHTML;
+                
+                // עדכון כותרת הדף ומידע נוסף
                 const urlParams = new URLSearchParams(window.location.search);
                 const title = urlParams.get('title') || 'מאמר מחקר';
                 const date = urlParams.get('date') || 'מאי2025';
@@ -178,23 +206,24 @@
                 document.getElementById('articleDate').textContent = date;
                 document.getElementById('articleReadTime').textContent = readTime;
                 document.getElementById('articleType').textContent = type;
+                
+                // עדכון כותרת הדף
                 document.title = `${title} | Hippopotamus Research`;
-                
-                // הסרת אינדיקטור הטעינה והצגת התוכן
-                loadingIndicator.remove();
-                contentDiv.innerHTML = content;
-                
-                // הוספת סגנונות לתוכן המאמר
-                const articleImages = contentDiv.getElementsByTagName('img');
-                for (let img of articleImages) {
+
+                // טיפול בתמונות
+                const images = articleContent.getElementsByTagName('img');
+                for (let img of images) {
+                    // הוספת lazy loading לתמונות
                     img.loading = 'lazy';
-                    if (!img.alt) {
-                        img.alt = 'תמונה במאמר';
+                    // טיפול בנתיבי תמונות יחסיים
+                    if (img.src.startsWith('./')) {
+                        img.src = img.src.replace('./', '/HippoResearch/');
                     }
                 }
-                
+
             } catch (error) {
-                contentDiv.innerHTML = `
+                console.error('Error loading article:', error);
+                articleContent.innerHTML = `
                     <div class="error-message">
                         <i class="fas fa-exclamation-circle"></i>
                         <p>אירעה שגיאה בטעינת המאמר. אנא נסה שוב מאוחר יותר.</p>
@@ -204,7 +233,10 @@
                         </a>
                     </div>
                 `;
-                console.error('Error loading article:', error);
+            } finally {
+                if (loadingIndicator) {
+                    loadingIndicator.remove();
+                }
             }
         }
 
