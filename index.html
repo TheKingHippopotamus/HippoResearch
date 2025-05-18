@@ -258,6 +258,34 @@
             frame.src = '';
             document.body.style.overflow = '';
         } */
+
+        // Dynamic link for Featured Article button based on screen size
+        document.addEventListener('DOMContentLoaded', function() {
+            const readArticleButton = document.querySelector('.featured-section .read-article-btn');
+            const originalHref = readArticleButton ? readArticleButton.href : '';
+
+            function updateReadArticleLink() {
+                // Adjust the threshold as needed, 768px is a common mobile breakpoint
+                if (window.innerWidth <= 768) {
+                    if (readArticleButton) {
+                        // Set the link directly to the article file for mobile
+                        readArticleButton.href = './research/nvo.html';
+                    }
+                } else {
+                    if (readArticleButton) {
+                        // Set the link back to the article viewer for desktop
+                        // Ensure this matches the original href attribute value in the HTML
+                        readArticleButton.href = './article-viewer.html?article=./research/nvo.html&title=ניתוח%20אסטרטגי:%20Novo%20Nordisk&date=פברואר%202024&readTime=זמן%20קריאה:%2010%20דקות&type=ניתוח%20שוק';
+                    }
+                }
+            }
+
+            // Update link on load
+            updateReadArticleLink();
+
+            // Update link on window resize
+            window.addEventListener('resize', updateReadArticleLink);
+        });
     </script>
 </body>
 </html> 
