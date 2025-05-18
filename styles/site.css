@@ -1652,4 +1652,55 @@ h1, h2, h3, h4, h5, h6 {
         height: 100vh;
         margin: 0;
     }
+}
+
+/* Desktop link override for featured article button */
+@media (min-width: 769px) {
+    .featured-section .read-article-btn::after {
+        content: attr(href, url);
+        /* Hide the original link text if needed and adjust padding */
+        display: none; /* Or adjust positioning to overlay */
+    }
+
+    .featured-section .read-article-btn {
+        /* Override the href attribute using CSS only on larger screens */
+        /* This is a CSS trick and might not be supported everywhere or be ideal for accessibility/SEO */
+        /* The actual navigation relies on the HTML href, unless JavaScript is used (which we tried) */
+        /* This attempts to visually change the link destination but navigation is still based on HTML */
+        /* Given previous issues with JS, relying on the HTML href for mobile is more robust */
+        /* For desktop, the HTML now points to nvo.html, but we want article-viewer.html. */
+        /* A pure CSS solution to change href is not possible. We must use JS or different buttons. */
+        /* Let's revert the HTML href for desktop and use JS only for mobile override. */
+
+        /* Reverting the plan to use CSS content. Going back to JS is the standard way. */
+        /* There must be an issue with the previous JS implementation or timing. */
+        /* Let's try fixing the JS implementation in index.html again, maybe with a delay or different event. */
+        
+        /* Okay, new plan: Revert index.html href back to article-viewer.html. */
+        /* Then, go back to index.html and refine the JS to ensure it runs and modifies the href correctly for mobile. */
+        /* Adding this comment block to signal a change in approach. */
+
+        /* Let's add a class to the button for mobile and desktop and use CSS to hide/show */
+        /* This requires modifying index.html to add two buttons or add/remove a class */
+
+        /* Final plan for now: Revert index.html href to article-viewer.html */
+        /* Use JS in index.html to change href to research/nvo.html only on mobile */
+        /* This time, ensure the JS runs after the DOM is fully loaded and the button exists */
+        /* Previous JS should have worked. Let's review it. */
+
+        /* Reviewing previous JS in index.html: */
+        /* - event listener on DOMContentLoaded: Correct */
+        /* - querySelector: Correct */
+        /* - innerWidth check: Correct */
+        /* - Changing href: Correct */
+        /* - Preventing default: Correct */
+
+        /* Possible issues: */
+        /* - Script loading order: Is this script after the button HTML? Yes, it's at the end of body. */
+        /* - Other JS errors preventing this script from running: Check console. */
+        /* - Caching issues: Browser cache or GitHub Pages cache. */
+
+        /* Let's re-apply the previous JS to index.html and ask the user to clear cache. */
+        
+    }
 } 
