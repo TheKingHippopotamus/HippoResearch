@@ -1963,7 +1963,7 @@ h1, h2, h3, h4, h5, h6 {
 .widget-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .widget-section {
@@ -1986,6 +1986,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .widget-content {
     height: 100%;
+    padding: 1rem;
 }
 
 .widget-content .tradingview-widget-container {
@@ -2003,7 +2004,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .widget-grid {
-        gap: 1rem;
+        gap: 1.5rem;
     }
 
     .widget-section:first-child {
@@ -2019,12 +2020,14 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .widget-content {
+        padding: 0.8rem;
     }
 }
 
 @media (max-width: 768px) {
     .widget-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
     .widget-section:first-child {
@@ -2040,6 +2043,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .widget-content {
+        padding: 0.8rem;
     }
 
     .stats-header {
@@ -2080,11 +2084,11 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 480px) {
     .widgets-container {
-        padding: 0 0.6rem;
+        padding: 0 0.8rem;
     }
 
     .widget-grid {
-        gap: 0.8rem;
+        gap: 1.2rem;
     }
 
     .widget-section {
@@ -2101,6 +2105,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .widget-content {
+        padding: 0.6rem;
     }
 
     .stats-header {
