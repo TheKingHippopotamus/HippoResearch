@@ -254,7 +254,15 @@
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
             const articlePath = urlParams.get('article') || './research/nvo.html';
-            loadArticle(articlePath);
+            loadArticle(articlePath).then(() => {
+                // Ensure RTL direction for loaded content
+                const articleContent = document.getElementById('articleContent');
+                if (articleContent) {
+                    articleContent.setAttribute('dir', 'rtl');
+                    // Optional: Apply dir="rtl" to all child elements as well
+                    articleContent.querySelectorAll('*').forEach(el => el.setAttribute('dir', 'rtl'));
+                }
+            });
         });
     </script>
 </body>

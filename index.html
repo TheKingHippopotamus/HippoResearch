@@ -184,6 +184,14 @@
                         </div>
                     </section>
 
+                    <!-- Article Content Area -->
+                    <section id="articleDisplayArea" class="article-display-area" style="display: none;">
+                        <div class="article-content-wrapper">
+                            <button class="close-article-btn">&times;</button>
+                            <div id="loadedArticleContent" class="loaded-article-content"></div>
+                        </div>
+                    </section>
+
                     <section id="about" class="info-card">
                         <div class="card-content">
                             <h2>הגישה המחקרית</h2>
@@ -367,6 +375,202 @@
                 startTransition();
             });
         });
+
+        // Function to load and display article
+        async function loadAndDisplayArticle(articlePath) {
+            const articleDisplayArea = document.getElementById('articleDisplayArea');
+            const loadedArticleContent = document.getElementById('loadedArticleContent');
+            
+            loadedArticleContent.innerHTML = '<div class="loading-indicator"><i class="fas fa-spinner fa-spin"></i> טוען מאמר...</div>';
+            articleDisplayArea.style.display = 'block';
+            
+            try {
+                const response = await fetch(articlePath);
+                if (!response.ok) throw new Error('Failed to load article');
+                
+                const html = await response.text();
+                
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const articleBody = doc.querySelector('body');
+                
+                // Set content and ensure RTL
+                loadedArticleContent.innerHTML = articleBody.innerHTML;
+                loadedArticleContent.setAttribute('dir', 'rtl');
+                loadedArticleContent.querySelectorAll('*').forEach(el => el.setAttribute('dir', 'rtl'));
+                
+                // Handle images
+                const images = loadedArticleContent.getElementsByTagName('img');
+                for (let img of images) {
+                    img.loading = 'lazy';
+                    if (img.src.startsWith('./')) {
+                         // Adjust path for images relative to nvo.html
+                        img.src = img.src.replace('./', '/HippoResearch/research/');
+                    }
+                }
+
+                // Scroll to the article display area
+                articleDisplayArea.scrollIntoView({ behavior: 'smooth' });
+
+            } catch (error) {
+                console.error('Error loading article:', error);
+                loadedArticleContent.innerHTML = `
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p>אירעה שגיאה בטעינת המאמר. אנא נסה שוב מאוחר יותר.</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Add event listener to the read button
+        document.addEventListener('DOMContentLoaded', function() {
+            const readButton = document.querySelector('.featured-section .card-btn.primary');
+            if (readButton) {
+                readButton.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent default link behavior
+                    loadAndDisplayArticle('./research/nvo.html'); // Load nvo.html
+                });
+            }
+        });
+
+        // Add event listener to the close button
+        document.addEventListener('DOMContentLoaded', function() {
+            const closeButton = document.querySelector('.close-article-btn');
+            const articleDisplayArea = document.getElementById('articleDisplayArea');
+            if (closeButton && articleDisplayArea) {
+                closeButton.addEventListener('click', function() {
+                    articleDisplayArea.style.display = 'none';
+                    const loadedArticleContent = document.getElementById('loadedArticleContent');
+                    loadedArticleContent.innerHTML = ''; // Clear content
+                });
+            }
+        });
+
+        // Add necessary styles for the article display area
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .article-display-area {
+                margin: 2rem auto;
+                max-width: 900px;
+                padding: 1.5rem;
+                background: #f9f9f9;
+                border-radius: 12px;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                position: relative;
+                direction: rtl; /* Ensure RTL direction for the container */
+            }
+
+            .article-content-wrapper {
+                position: relative;
+            }
+            
+            .loaded-article-content {
+                /* Styles for the loaded content */
+                direction: rtl; /* Ensure RTL direction for loaded content */
+                text-align: right; /* Align text to the right */
+                line-height: 1.6;
+                color: #333;
+            }
+
+            .loaded-article-content img {
+                max-width: 100%;
+                height: auto;
+                display: block;
+                margin: 1rem auto;
+                border-radius: 8px;
+            }
+
+            .loaded-article-content h1, .loaded-article-content h2, .loaded-article-content h3 {
+                color: var(--heading-color);
+                margin: 1.5rem 0 0.8rem;
+                text-align: right;
+            }
+
+            .loaded-article-content p {
+                margin-bottom: 1em;
+                text-align: right;
+            }
+
+            .loaded-article-content ul, .loaded-article-content ol {
+                margin: 1em 0;
+                padding-right: 2em;
+            }
+
+            .loaded-article-content li {
+                margin-bottom: 0.5em;
+                text-align: right;
+            }
+
+            .loaded-article-content blockquote {
+                margin: 1.5rem 0;
+                padding: 1rem 1.5rem;
+                border-right: 4px solid var(--primary-color);
+                background: rgba(153, 123, 168, 0.05);
+                border-radius: 0 8px 8px 0;
+                text-align: right;
+            }
+
+            .loaded-article-content code {
+                background: rgba(153, 123, 168, 0.1);
+                padding: 0.2em 0.4em;
+                border-radius: 4px;
+                font-family: monospace;
+                font-size: 0.9em;
+            }
+
+            .loaded-article-content pre {
+                background: rgba(153, 123, 168, 0.05);
+                padding: 1em;
+                border-radius: 8px;
+                overflow-x: auto;
+                margin: 1em 0;
+                direction: ltr; /* Keep code blocks LTR if they contain code */
+                text-align: left; /* Align code to the left */
+            }
+
+            .loaded-article-content table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 1.5rem 0;
+                direction: rtl; /* Ensure table direction */
+            }
+
+            .loaded-article-content th, .loaded-article-content td {
+                padding: 0.8em;
+                border: 1px solid #ddd;
+                text-align: right; /* Align table text to the right */
+            }
+
+            .loaded-article-content th {
+                background: #f2f2f2;
+                font-weight: bold;
+            }
+
+            .close-article-btn {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                font-size: 1.5rem;
+                background: none;
+                border: none;
+                cursor: pointer;
+                color: #555;
+                transition: color 0.3s ease;
+                z-index: 10;
+            }
+
+            .close-article-btn:hover {
+                color: #333;
+            }
+
+            .loading-indicator {
+                text-align: center;
+                font-size: 1.2rem;
+                color: #555;
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html> 
