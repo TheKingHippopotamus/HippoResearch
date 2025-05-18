@@ -467,10 +467,11 @@
             
             .loaded-article-content {
                 /* Styles for the loaded content */
-                direction: rtl; /* Ensure RTL direction for loaded content */
-                text-align: right; /* Align text to the right */
+                direction: rtl !important; /* Force RTL direction */
+                text-align: right !important; /* Force Align text to the right */
                 line-height: 1.6;
                 color: #333;
+                padding-top: 30px; /* Space for the close button */
             }
 
             .loaded-article-content img {
@@ -568,6 +569,21 @@
                 text-align: center;
                 font-size: 1.2rem;
                 color: #555;
+            }
+
+            .modal-article-content p,
+            .modal-article-content h1, .modal-article-content h2, .modal-article-content h3,
+            .modal-article-content h4, .modal-article-content h5, .modal-article-content h6,
+            .modal-article-content li {
+                /* Ensure RTL direction for specific text elements */
+                direction: rtl !important;
+                text-align: right !important;
+                unicode-bidi: embed; /* Add unicode-bidi back */
+            }
+
+            .modal-article-content h1, .modal-article-content h2, .modal-article-content h3 {
+                color: var(--heading-color);
+                margin: 1.5rem 0 0.8rem;
             }
         `;
         document.head.appendChild(style);
