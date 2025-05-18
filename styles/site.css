@@ -357,7 +357,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     background: transparent;
     padding: 0.4rem 0;
-    margin: 0 0 2.5rem 0;
+    margin: 0 0 4rem 0;
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -377,6 +377,14 @@ h1, h2, h3, h4, h5, h6 {
     max-height: 55px !important;
 }
 
+.tradingview-widget-copyright {
+    display: block !important;
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 0.5rem;
+    color: #666;
+}
+
 /* Timeline Widget Container */
 .tradingview-widget-container:not(.ticker-tape-container .tradingview-widget-container) {
     margin: 2.5rem auto 2.5rem auto;
@@ -392,7 +400,7 @@ h1, h2, h3, h4, h5, h6 {
     .ticker-tape-container {
         height: 65px;
         min-height: 65px;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2.5rem;
         padding: 0.4rem 0;
     }
 
@@ -525,13 +533,41 @@ h1, h2, h3, h4, h5, h6 {
     .featured-section {
         margin-top: 2rem;
     }
+
+    .tradingview-widget-copyright {
+        display: none !important;
+    }
+
+    .card-actions {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .card-btn {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .card-btn.secondary {
+        min-width: unset;
+    }
+
+    .card-btn.secondary:first-child,
+    .card-btn.secondary:last-child {
+        opacity: 0.95;
+    }
+    
+    .card-btn.secondary:first-child:hover,
+    .card-btn.secondary:last-child:hover {
+        opacity: 1;
+    }
 }
 
 @media (max-width: 480px) {
     .ticker-tape-container {
         height: 70px;
         min-height: 70px;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
         padding: 0.3rem 0;
     }
 
@@ -629,6 +665,42 @@ h1, h2, h3, h4, h5, h6 {
     
     .featured-section {
         margin-top: 1.5rem;
+    }
+
+    .tradingview-widget-copyright {
+        display: none !important;
+    }
+
+    .card-actions {
+        flex-direction: column;
+        gap: 0.8rem;
+        margin-top: 1rem;
+    }
+
+    .card-btn {
+        width: 100%;
+        min-width: unset;
+        height: 40px;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.85rem;
+    }
+
+    .card-btn.secondary {
+        min-width: unset;
+    }
+
+    .card-btn.secondary:first-child,
+    .card-btn.secondary:last-child {
+        opacity: 0.95;
+    }
+
+    .card-btn.secondary:first-child:hover,
+    .card-btn.secondary:last-child:hover {
+        opacity: 1;
+    }
+
+    .card-btn.primary {
+        font-size: 0.8rem;
     }
 }
 
@@ -1492,6 +1564,10 @@ h1, h2, h3, h4, h5, h6 {
 
     .card-btn.primary {
         font-size: 0.75rem;
+    }
+
+    .tradingview-widget-copyright {
+        display: none !important;
     }
 }
 
