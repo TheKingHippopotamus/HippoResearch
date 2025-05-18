@@ -259,32 +259,27 @@
             document.body.style.overflow = '';
         } */
 
-        // Dynamic link for Featured Article button based on screen size
+        // Language Switcher
+        // Assuming Language Switcher logic is here or in main.js
+
+        // Handle click on Featured Article button based on screen size
         document.addEventListener('DOMContentLoaded', function() {
             const readArticleButton = document.querySelector('.featured-section .read-article-btn');
-            const originalHref = readArticleButton ? readArticleButton.href : '';
+            const desktopHref = './article-viewer.html?article=./research/nvo.html&title=ניתוח%20אסטרטגי:%20Novo%20Nordisk&date=פברואר%202024&readTime=זמן%20קריאה:%2010%20דקות&type=ניתוח%20שוק';
+            const mobileHref = './research/nvo.html';
 
-            function updateReadArticleLink() {
-                // Adjust the threshold as needed, 768px is a common mobile breakpoint
-                if (window.innerWidth <= 768) {
-                    if (readArticleButton) {
-                        // Set the link directly to the article file for mobile
-                        readArticleButton.href = './research/nvo.html';
+            if (readArticleButton) {
+                readArticleButton.addEventListener('click', function(event) {
+                    event.preventDefault(); // Prevent the default link behavior
+
+                    // Adjust the threshold as needed, 768px is a common mobile breakpoint
+                    if (window.innerWidth <= 768) {
+                        window.location.href = mobileHref;
+                    } else {
+                        window.location.href = desktopHref;
                     }
-                } else {
-                    if (readArticleButton) {
-                        // Set the link back to the article viewer for desktop
-                        // Ensure this matches the original href attribute value in the HTML
-                        readArticleButton.href = './article-viewer.html?article=./research/nvo.html&title=ניתוח%20אסטרטגי:%20Novo%20Nordisk&date=פברואר%202024&readTime=זמן%20קריאה:%2010%20דקות&type=ניתוח%20שוק';
-                    }
-                }
+                });
             }
-
-            // Update link on load
-            updateReadArticleLink();
-
-            // Update link on window resize
-            window.addEventListener('resize', updateReadArticleLink);
         });
     </script>
 </body>
