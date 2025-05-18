@@ -264,6 +264,7 @@ h1, h2, h3, h4, h5, h6 {
     flex-grow: 1;
     min-height: calc(100vh - var(--header-height) - var(--footer-height));
     padding: 1.5rem;
+    box-sizing: border-box;
 }
 
 .content-wrapper {
@@ -2178,4 +2179,5 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer {
     flex-shrink: 0;
+    margin-top: auto;
 } 
